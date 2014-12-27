@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227135254) do
+ActiveRecord::Schema.define(version: 20141227191101) do
 
   create_table "invoices", force: true do |t|
     t.decimal  "value"
     t.integer  "operator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "done"
+    t.boolean  "done",        default: false
     t.string   "title"
   end
 
