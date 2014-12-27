@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  
+  #   resources :invoices
+  get 'invoices' => 'invoices#index'
+  
+  get 'invoices/mark_as_done/:id' => 'invoices#mark_as_done'
+  
+  get 'invoices/done' => 'invoices#done'
+  get 'invoices/not_done' => 'invoices#not_done'
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

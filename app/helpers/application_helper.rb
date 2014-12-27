@@ -5,10 +5,14 @@ module ApplicationHelper
   end
   
   def magic_list(list)
+    #     TODO koniecznie przepisz ta fjce na partial albo content_tag
     result = ''
     list.each do |item|
       result += magic_item(item)
+      result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}"
+      result += tag('br')
     end
+    return result.html_safe
   end
   
   private 
