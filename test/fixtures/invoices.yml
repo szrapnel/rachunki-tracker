@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  value: 5.55
+  operator_id: 1
+  done: false
+  title: "I"
+
+two:
+  id: 2
+  value: 9.99
+  operator_id: 2
+  done: false
+  title: "X"
