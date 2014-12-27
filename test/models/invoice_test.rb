@@ -15,6 +15,18 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal org.operator, last.operator
   end
   
+  test "done" do
+    list = Invoice.done
+    list.each do |item|
+      assert item.done
+    end
+  end
   
+  test "not_done" do
+    list = Invoice.not_done
+    list.each do |item|
+      assert item.done==false
+    end
+  end
   
 end

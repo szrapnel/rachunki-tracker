@@ -13,3 +13,10 @@ two:
   operator_id: 2
   done: false
   title: "X"
+  
+three:
+  id: 3
+  value: 7.77
+  operator_id: 2
+  done: true
+  title: "ZZ"

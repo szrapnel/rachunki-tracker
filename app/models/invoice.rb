@@ -16,6 +16,14 @@ class Invoice < ActiveRecord::Base
     new_invoice.save
   end
   
+  def self.done
+    Invoice.where(done: true)
+  end
+  
+  def self.not_done
+    Invoice.where(done: false)
+  end
+  
   def self.get_next_title(old_title)
     # zrob array
     case old_title
