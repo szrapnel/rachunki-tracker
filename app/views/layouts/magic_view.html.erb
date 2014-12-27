@@ -1,0 +1,17 @@
+<br/>
+list
+<br/>
+<% if @list.nil? %>
+  <%= 'needed list variable' %>
+<% else %>
+  <%= magic_list(@list) %>
+<% end %>
+
+<br/>
+item
+<br/>
+<% if @item.nil? %>
+  <%= 'needed item variable' %>
+<% else %>
+  <%= magic_item(@item) %>
+<% end %>
