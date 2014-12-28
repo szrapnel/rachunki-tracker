@@ -5,8 +5,8 @@ class InvoicesController < ApplicationController
   end
 
   def index
-    @list = Invoices.all  
-    @item = @invoices.first
+    @list = Invoice.all  
+    @item = @list.first
     render template: "layouts/magic_view"
   end
   

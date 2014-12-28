@@ -9,7 +9,8 @@ module ApplicationHelper
     result = ''
     list.each do |item|
       result += magic_item(item)
-      result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}"
+      # TODO to nie jest magic tylko kaszana
+      result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}" unless item.done
       result += tag('br')
     end
     return result.html_safe

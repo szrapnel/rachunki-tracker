@@ -9,11 +9,7 @@ class Invoice < ActiveRecord::Base
     invoice.done = true
     invoice.save
     
-    new_invoice = Invoice.new
-    new_invoice.operator = invoice.operator
-    new_invoice.title = get_next_title(invoice.title)
-    new_invoice.done = false
-    new_invoice.save
+    create_next(invoice)
   end
   
   def self.done
@@ -22,6 +18,14 @@ class Invoice < ActiveRecord::Base
   
   def self.not_done
     Invoice.where(done: false)
+  end
+
+  def self.create_next(invoice)
+    new_invoice = Invoice.new
+    new_invoice.operator = invoice.operator
+    new_invoice.title = get_next_title(invoice.title)
+    new_invoice.done = false
+    new_invoice.save
   end
   
   def self.get_next_title(old_title)
