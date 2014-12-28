@@ -1,0 +1,11 @@
+<hr/>
+<br/>
+<% if controller_name=='operators' || controller_name=='invoices' %>
+  <%= render "#{controller_name}/sub_menu" %>
+<% end %>
+
+<hr/>
+<br/>
+<%= link_to "Operators", '/operators' %>
+<br/>
+<%= link_to "Invoices", '/invoices' %>

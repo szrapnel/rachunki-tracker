@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  before_action :set_invoice, only: [:destroy]
 
   def new
     @invoice = Invoice.new
@@ -26,11 +27,25 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    @invoice = Invoice.new(invoice_params)
     if @invoice.save
       redirect_to invoices_path, notice: "Invoice created successfully."
     else
       render action: 'new'
     end
+  end
+  
+  def destroy
+    @invoice.destroy
+    redirect_to invoices_url, notice: 'Invoice was successfully destroyed.'
+  end
+  
+  def set_invoice
+    @invoice = Invoice.find(params[:id])
+  end
+  
+  def invoice_params
+    params.require(:invoice).permit(:title, :value, :operator_id, :done)
   end
 
 end

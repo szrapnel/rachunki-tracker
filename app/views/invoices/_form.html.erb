@@ -1,0 +1,12 @@
+form
+<!-- <%= form_for @invoice, url: {action: "create"} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "Create" %>
+<% end %> -->
+form
+
+<!--  to nie idzie do create nie wiem czemu -->
+<%= semantic_form_for @invoice, url: {action: "create"} do |f| %>
+    <%= f.inputs %>
+    <%= f.actions %>
+  <% end %>

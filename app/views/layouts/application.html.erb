@@ -7,15 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<p id="notice"><%= notice %></p>
 
 <%= yield %>
   
-  <br/>
-  <%= link_to "Index", '/invoices' %>
-  <br/>
-  <%= link_to "Done", '/invoices/done' %>
-  <br/>
-  <%= link_to "Not Done", '/invoices/not_done' %>
+<%= render "layouts/menu" %>
 
 </body>
 </html>

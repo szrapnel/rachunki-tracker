@@ -11,6 +11,7 @@ module ApplicationHelper
       result += magic_item(item)
       # TODO to nie jest magic tylko kaszana
       result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}" unless item.done
+      result += link_to "Destroy", "/invoices/destroy/#{item.id}"
       result += tag('br')
     end
     return result.html_safe
