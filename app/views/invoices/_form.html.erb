@@ -6,7 +6,10 @@ form
 form
 
 <!--  to nie idzie do create nie wiem czemu -->
-<%= semantic_form_for @invoice, url: {action: "create"} do |f| %>
+<% action='create' %>
+<% action='update' if action_name=='edit' %>
+
+<%= semantic_form_for @invoice, url: {action: action} do |f| %>
     <%= f.inputs %>
     <%= f.actions %>
   <% end %>

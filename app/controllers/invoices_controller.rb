@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:destroy]
+  before_action :set_invoice, only: [:destroy, :edit, :update]
 
   def new
     @invoice = Invoice.new
@@ -9,6 +9,17 @@ class InvoicesController < ApplicationController
     @list = Invoice.all  
     @item = @list.first
     render template: "layouts/magic_view"
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @invoice.update(invoice_params)
+      redirect_to invoices_path, notice: 'Invoice was successfully updated.'
+    else
+      render :edit
+    end
   end
   
   def done
@@ -45,7 +56,7 @@ class InvoicesController < ApplicationController
   end
   
   def invoice_params
-    params.require(:invoice).permit(:title, :value, :operator_id, :done)
+    params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date)
   end
 
 end
