@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Operator.find_or_create_by(name: 'Firm_One')
+Operator.find_or_create_by(name: 'Firm_Two')
+Operator.find_or_create_by(name: 'Firm_Three')
+Operator.find_or_create_by(name: 'Firm_Four')
+Operator.find_or_create_by(name: 'Firm_Five')
+
+Invoice.find_or_create_by(operator_id: 1, title: 'I', done: true, value: 5)
+Invoice.find_or_create_by(operator_id: 1, title: 'II', value: 3)
