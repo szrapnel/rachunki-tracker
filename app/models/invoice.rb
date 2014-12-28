@@ -6,8 +6,7 @@ class Invoice < ActiveRecord::Base
     if invoice.nil? 
       raise "oops"
     end
-    invoice.done = true
-    invoice.save
+    execute_as_done(invoice)
     
     create_next(invoice)
   end
@@ -18,6 +17,12 @@ class Invoice < ActiveRecord::Base
   
   def self.not_done
     Invoice.where(done: false)
+  end
+  
+  def self.execute_as_done(invoice)
+    invoice.done = true
+    invoice.done_date = DateTime.now.to_date
+    invoice.save
   end
 
   def self.create_next(invoice)
