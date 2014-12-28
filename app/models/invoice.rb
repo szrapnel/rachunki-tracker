@@ -15,6 +15,13 @@ class Invoice < ActiveRecord::Base
     Invoice.where(done: true)
   end
   
+  def self.latest
+    list = Operator.all.map { |o| o.invoices.last }
+    list.compact
+#     Invoice.where(done: true)
+    #     ale tak naprawde to nie last bo daty sa wazne
+  end
+  
   def self.not_done
     Invoice.where(done: false)
   end

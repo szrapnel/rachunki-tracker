@@ -32,6 +32,11 @@ class InvoicesController < ApplicationController
     render template: "layouts/magic_view"
   end
   
+  def latest
+    @list = Invoice.latest
+    render template: "layouts/magic_view"
+  end
+  
   def mark_as_done
     Invoice::mark_as_done(params[:id])
     redirect_to invoices_path, notice: "Invoice marked successfully."
