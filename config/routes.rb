@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'invoices/done' => 'invoices#done'
   get 'invoices/not_done' => 'invoices#not_done'
   get 'invoices/latest' => 'invoices#latest'
+  get 'invoices/overdue' => 'invoices#overdue'
+  get 'invoices/fancy' => 'invoices#fancy'
   
   get 'invoices/new' => 'invoices#new'
   post 'invoices/create' => 'invoices#create'

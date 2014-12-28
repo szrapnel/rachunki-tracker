@@ -10,7 +10,9 @@
   <tbody>
     <% @operators.each do |operator| %>
       <tr>
+        <td><%= operator.id %></td>
         <td><%= operator.name %></td>
+        <td><%= operator.days_between_invoices %></td>
         <td><%= link_to 'Show', operator %></td>
         <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
         <td><%= link_to 'Destroy', operator, method: :delete, data: { confirm: 'Are you sure?' } %></td>

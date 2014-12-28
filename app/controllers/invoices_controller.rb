@@ -37,6 +37,16 @@ class InvoicesController < ApplicationController
     render template: "layouts/magic_view"
   end
   
+  def overdue
+    @list = Invoice.overdue
+    render template: "layouts/magic_view"
+  end
+  
+  def fancy
+    @list = Invoice.fancy
+    render template: "layouts/magic_view"
+  end
+  
   def mark_as_done
     Invoice::mark_as_done(params[:id])
     redirect_to invoices_path, notice: "Invoice marked successfully."

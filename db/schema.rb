@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228185547) do
+ActiveRecord::Schema.define(version: 20141228205145) do
 
   create_table "invoices", force: true do |t|
     t.decimal  "value"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141228185547) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "days_between_invoices"
   end
 
 end
