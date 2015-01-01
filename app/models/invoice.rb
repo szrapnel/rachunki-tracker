@@ -68,9 +68,13 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.calculate_new_due_date(invoice)
-    unless invoice.operator.nil?
+    unless invalid_data_for_new_due_date?(invoice)
       return invoice.due_date+invoice.operator.days_between_invoices.days
     end
+  end
+  
+  def self.invalid_data_for_new_due_date?(invoice)
+    invoice.operator.nil? || invoice.due_date.nil? || invoice.operator.days_between_invoices.nil?
   end
 
   def self.get_next_title(old_title)
