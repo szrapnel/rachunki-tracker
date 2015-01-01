@@ -1,5 +1,9 @@
 <h1><%= controller_name %></h1>
 <h2><%= action_name %></h2>
+<% my_params = params %>
+<% my_params.delete('controller') %>
+<% my_params.delete('action') %>
+<h2><%= my_params %></h2>
 <br/>
 list
 <br/>

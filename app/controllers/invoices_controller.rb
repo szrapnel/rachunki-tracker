@@ -22,28 +22,8 @@ class InvoicesController < ApplicationController
     end
   end
   
-  def done
-    @list = Invoice.done
-    render template: "layouts/magic_view"
-  end
-  
-  def not_done
-    @list = Invoice.not_done
-    render template: "layouts/magic_view"
-  end
-  
-  def latest
-    @list = Invoice.latest
-    render template: "layouts/magic_view"
-  end
-  
-  def overdue
-    @list = Invoice.overdue
-    render template: "layouts/magic_view"
-  end
-  
-  def fancy
-    @list = Invoice.fancy
+  def filtered
+    @list = InvoiceHelper.send(params[:filter_name])
     render template: "layouts/magic_view"
   end
   

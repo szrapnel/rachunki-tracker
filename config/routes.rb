@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   get 'invoices/mark_as_done/:id' => 'invoices#mark_as_done'
   
+  get 'invoices/filtered/:filter_name' => 'invoices#filtered'
+  
   get 'invoices/done' => 'invoices#done'
   get 'invoices/not_done' => 'invoices#not_done'
   get 'invoices/latest' => 'invoices#latest'
