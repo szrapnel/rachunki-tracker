@@ -16,14 +16,16 @@ class InvoiceTest < ActiveSupport::TestCase
   end
   
   test "done" do
-    list = Invoice.done
+    #     przeniec do helper test
+    list = InvoiceHelper.done
     list.each do |item|
       assert item.done
     end
   end
   
   test "not_done" do
-    list = Invoice.not_done
+    #     przeniec do helper test
+    list = InvoiceHelper.not_done
     list.each do |item|
       assert item.done==false
     end
