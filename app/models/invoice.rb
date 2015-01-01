@@ -62,7 +62,7 @@ class Invoice < ActiveRecord::Base
     new_invoice = Invoice.new
     new_invoice.operator = invoice.operator
     new_invoice.due_date = calculate_new_due_date(invoice)
-    new_invoice.title = get_next_title(invoice.title)
+    new_invoice.title = TitleGenerator::get_next_title(invoice.title)
     new_invoice.done = false
     new_invoice.save
   end
@@ -75,12 +75,6 @@ class Invoice < ActiveRecord::Base
   
   def self.invalid_data_for_new_due_date?(invoice)
     invoice.operator.nil? || invoice.due_date.nil? || invoice.operator.days_between_invoices.nil?
-  end
-
-  def self.get_next_title(old_title)
-    source = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
-    destination = ['II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'I']
-    return destination[source.index(old_title)];
   end
 
 end
