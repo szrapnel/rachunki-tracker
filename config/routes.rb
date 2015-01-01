@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   
   # root 'welcome#index'
   
-  root 'invoices#fancy'
+  root 'invoices#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
