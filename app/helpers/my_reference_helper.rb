@@ -9,14 +9,16 @@ module MyReferenceHelper
   end
 
   def get_referenced_value(object, field_name)
-    object.instance_eval(field_name)
+#     object.instance_eval(field_name)
     fn = field_name.remove("_id")
     #     dopisz tutaj sprawdzenie czy jest pole name ew zrobic tez title jak nie
     #     oraz sprawdzuc tez czy nie ma czegos takiego jak distply field w railsach
-    if object.instance_eval(fn).nil?
+    ob = object.instance_eval(fn)
+    if ob.nil?
       return nil
     else
-      return object.instance_eval(fn).name
+#       return ob.name
+      return link_to ob.name, "/#{fn}s/#{ob.id}"
     end
 #     return object.instance_eval(fn).name
   end

@@ -1,5 +1,6 @@
 module ApplicationHelper
   
+  #   TODO wycofaj sie z tego 
   def magic_item(object)
     magic_view(object)
   end
