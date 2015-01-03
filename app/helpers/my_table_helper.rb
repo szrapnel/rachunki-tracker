@@ -1,8 +1,15 @@
 module MyTableHelper
   
-  def magic_table(collection={}, action_names=['show', 'destroy', 'edit'])
+  def magic_table(collection={}, action_names=nil)
     if collection.count==0
       return "no data in collection"
+    end
+    if action_names.nil?
+      if collection.first.respond_to? :default_actions
+        action_names = collection.first.default_actions
+      else
+        action_names = ['show', 'edit', 'destroy']
+      end
     end
     columns = get_columns_for_table(collection.first)
     display_standard_table(columns, collection, action_names)

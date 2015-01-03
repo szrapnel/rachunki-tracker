@@ -11,7 +11,7 @@ list
   <%= 'needed list variable' %>
 <% else %>
   <%= magic_list(@list) %>
-  <%= magic_table(@list, ['mark_as_done', 'destroy', 'edit']) %>
+  <%= magic_table(@list) %>
   <br/>
   <%= @list.count %>
 <% end %>

@@ -1,6 +1,10 @@
 class Invoice < ActiveRecord::Base
   belongs_to :operator
-
+  
+  def default_actions
+    return ['mark_as_done', 'show', 'edit', 'destroy']
+  end
+ 
   def self.mark_as_done(id)
     invoice = Invoice.find(id)
     fail 'oops' if invoice.nil?
