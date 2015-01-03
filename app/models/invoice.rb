@@ -4,6 +4,11 @@ class Invoice < ActiveRecord::Base
   def default_actions
     return ['mark_as_done', 'show', 'edit', 'destroy']
   end
+  
+  #   TODO rename
+  def self.default_global_actions
+    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
+  end
  
   def self.mark_as_done(id)
     invoice = Invoice.find(id)

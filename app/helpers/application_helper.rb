@@ -18,6 +18,15 @@ module ApplicationHelper
     return result.html_safe
   end
   
+  def generate_default_model_global_actions(model)
+    result = ''
+    model::default_global_actions.each do |action|
+      result += link_to action, "/invoices/#{action}"
+      result += tag('br')
+    end
+    return result.html_safe
+  end
+  
   private 
     def magic_view(object)
       column_names = get_column_names(object)
