@@ -5,37 +5,7 @@
 <% my_params.delete('action') %>
 <h2><%= my_params %></h2>
 
-<br/>
-<h3>table</h3>
-<br/>
-<% if @list.nil? %>
-  <%= 'needed list variable' %>
-<% else %>
-  <%= magic_table(@list) %>
-  <br/>
-  <%= @list.count %>
-<% end %>
-
-<br/>
-<h3>item</h3>
-<br/>
-<% if @item.nil? %>
-  <%= 'needed item variable' %>
-<% else %>
-  <%= magic_item(@item) %>
-<% end %>
-<br/>
-
-<!--
-<br/>
-<h3>list</h3>
-<br/>
-<% if @list.nil? %>
-  <%= 'needed list variable' %>
-<% else %>
-  <%= magic_list(@list) %>
-  <br/>
-  <%= @list.count %>
-<% end %>
--->
+<%= render "layouts/magic_table" %>
+<!-- <%= render "layouts/magic_item" %> -->
+<!-- <%= render "layouts/magic_list" %> -->
 

@@ -1,0 +1,9 @@
+<br/>
+<h3>item</h3>
+<br/>
+<% if @item.nil? %>
+  <%= 'needed item variable' %>
+<% else %>
+  <%= magic_item(@item) %>
+<% end %>
+<br/>

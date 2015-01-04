@@ -24,9 +24,10 @@ module ApplicationHelper
     return result.html_safe
   end
   
-  def generate_default_model_global_actions(model)
-    result = ''
-    model::default_model_actions.each do |action|
+  def generate_default_model_actions(model)
+    result = ''  
+    default_model_actions = get_default_model_actions(model)
+    default_model_actions.each do |action|
       result += link_to action, "/invoices/#{action}"
       result += tag('br')
     end
@@ -34,6 +35,12 @@ module ApplicationHelper
   end
   
   private 
+
+# nie wiem czy to nie powtorzenie default instance actions
+    def get_default_model_actions(model)
+      return model::default_model_actions if model.respond_to? :default_model_actions
+      return ['new']
+    end
 
     def get_column_names(object)
       column_names = object.class.column_names

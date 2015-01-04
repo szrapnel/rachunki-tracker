@@ -1,0 +1,10 @@
+<br/>
+<h3>list</h3>
+<br/>
+<% if @list.nil? %>
+  <%= 'needed list variable' %>
+<% else %>
+  <%= magic_list(@list) %>
+  <br/>
+  <%= @list.count %>
+<% end %>
