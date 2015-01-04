@@ -4,22 +4,18 @@ module MyTableHelper
     if collection.count==0
       return "no data in collection"
     end
-    get_instance_actions(collection.first, action_names)
-    action_names =  ['show']
+    action_names = get_instance_actions(collection.first, action_names)
     columns = get_columns_for_table(collection.first)
     display_standard_table(columns, collection, action_names)
   end
   
   def get_instance_actions(object, action_names)
-    return ['show']
-    if action_names.nil?
-      if object.respond_to? :default_instance_actions
-        return action_names = object.default_instance_actions
-      else
-        return action_names = ['show', 'edit', 'destroy']
-      end
+    return action_names unless action_names.nil?
+    if object.respond_to? :default_instance_actions
+      return action_names = object.default_instance_actions
+    else
+      return action_names = ['show', 'edit', 'destroy']
     end
-    return action_names
   end
   
   private
