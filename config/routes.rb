@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  #   root 'invoices#index'
+  root 'invoices#filtered', filter_name: 'fancy'
+  
   resources :operators
   
 #   resources :operators do
@@ -37,8 +40,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   
   # root 'welcome#index'
-  
-  root 'invoices#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

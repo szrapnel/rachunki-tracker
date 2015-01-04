@@ -42,7 +42,8 @@ class InvoicesController < ApplicationController
   
   def mark_as_done
     Invoice::mark_as_done(params[:id])
-    redirect_to invoices_path, notice: "Invoice marked successfully."
+#     redirect_to invoices_path, notice: "Invoice marked successfully."
+    redirect_to :back, notice: 'Invoice was successfully destroyed.'
   end
 
   private
