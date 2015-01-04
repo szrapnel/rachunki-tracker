@@ -1,12 +1,11 @@
 class Invoice < ActiveRecord::Base
   belongs_to :operator
   
-  def default_actions
+  def default_instance_actions
     return ['mark_as_done', 'show', 'edit', 'destroy']
   end
   
-  #   TODO rename
-  def self.default_global_actions
+  def self.default_model_actions
     return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
   end
  

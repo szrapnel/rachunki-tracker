@@ -21,7 +21,7 @@ module ApplicationHelper
   
   def generate_default_model_global_actions(model)
     result = ''
-    model::default_global_actions.each do |action|
+    model::default_model_actions.each do |action|
       result += link_to action, "/invoices/#{action}"
       result += tag('br')
     end

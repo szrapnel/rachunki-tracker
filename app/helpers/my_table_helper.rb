@@ -4,15 +4,19 @@ module MyTableHelper
     if collection.count==0
       return "no data in collection"
     end
+    get_instance_actions(collection.first, action_names)
+    columns = get_columns_for_table(collection.first)
+    display_standard_table(columns, collection, action_names)
+  end
+  
+  def get_instance_actions(object, action_names)
     if action_names.nil?
-      if collection.first.respond_to? :default_actions
-        action_names = collection.first.default_actions
+      if object.respond_to? :default_instance_actions
+        action_names = object.default_instance_actions
       else
         action_names = ['show', 'edit', 'destroy']
       end
     end
-    columns = get_columns_for_table(collection.first)
-    display_standard_table(columns, collection, action_names)
   end
   
   private
@@ -44,9 +48,13 @@ module MyTableHelper
   #           concat content_tag(:td, link_to("Destroy", "/invoices/destroy/#{elem.id}")).to_s.html_safe
   #           concat content_tag(:td, link_to("Edit", "/invoices/edit/#{elem.id}")).to_s.html_safe
       action_names.each do |action_name|
-        concat content_tag(:td, link_to(action_name, "/invoices/#{action_name}/#{elem.id}")).to_s.html_safe
+        concat content_tag(:td, prepare_action_link(elem, action_name)).to_s.html_safe
       end
     end
+  
+  def prepare_action_link(action_name)
+    link_to(action_name, "/invoices/#{action_name}/#{elem.id}")
+  end
 
     def get_columns_for_table(object)
       result = []

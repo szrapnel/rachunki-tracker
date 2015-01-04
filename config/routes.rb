@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'invoices/new' => 'invoices#new'
   post 'invoices/create' => 'invoices#create'
   
+  #   popraw to bo nie get
   get 'invoices/destroy/:id' => 'invoices#destroy'
   
   get 'invoices/edit/:id' => 'invoices#edit'
