@@ -21,7 +21,7 @@ module InvoiceHelper
 #     @due_this_week = current_user.tasks.where(due_date: Date.today..1.week.from_now)
     
 #     list = Invoice.where(due_date: Date.today..1.week.from_now)
-    list = Invoice.where(['due_date < ?', DateTime.now.to_date])
+    list = Invoice.where(['due_date < ?', NowService::get_now])
   end
 
   def self.fancy
@@ -29,13 +29,13 @@ module InvoiceHelper
 
 #     list = Invoice.where(due_date: Date.today..2.week.from_now)
       #       to jest spoko
-
-    list = Invoice.where(['due_date < ?', 2.week.from_now]).where(done: false)
+# 2.week.from_now
+    list = Invoice.where(['due_date < ?', NowService::get_now+2.weeks]).where(done: false)
     list2 = Invoice.where(due_date: nil).where(done: false)
     
     list3 = list + list2
 
-#     list = Invoice.where(['due_date < ?', DateTime.now.to_date])
+#     list = Invoice.where(['due_date < ?', NowService::get_now])
   end
 
   def self.not_done

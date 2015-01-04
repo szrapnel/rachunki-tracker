@@ -1,8 +1,12 @@
 module ApplicationHelper
   
-  #   TODO wycofaj sie z tego 
   def magic_item(object)
-    magic_view(object)
+    column_names = get_column_names(object)
+    result = ''
+    column_names.each do |cm|
+      result += " #{cm}: #{object[cm]}"
+    end
+    return result
   end
    
   def magic_list(list)
@@ -11,6 +15,7 @@ module ApplicationHelper
     list.each do |item|
       result += magic_item(item)
       # TODO to nie jest magic tylko kaszana
+      #       mam juz metody aby to bylo dobrze uzyj ich
       result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}" unless item.done
       result += link_to "Destroy", "/invoices/destroy/#{item.id}"
       result += link_to "Edit", "/invoices/edit/#{item.id}"
@@ -29,14 +34,6 @@ module ApplicationHelper
   end
   
   private 
-    def magic_view(object)
-      column_names = get_column_names(object)
-      result = ''
-      column_names.each do |cm|
-        result += " #{cm}: #{object[cm]}"
-      end
-      return result
-    end
 
     def get_column_names(object)
       column_names = object.class.column_names
