@@ -1,17 +1,25 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:destroy, :edit, :update]
+  
+  def index
+    @list = Invoice.all  
+    render template: "layouts/magic_view"
+  end
 
   def new
     @invoice = Invoice.new
   end
-
-  def index
-    @list = Invoice.all  
-    @item = @list.first
-    render template: "layouts/magic_view"
-  end
   
   def edit
+  end
+  
+  def create
+    @invoice = Invoice.new(invoice_params)
+    if @invoice.save
+      redirect_to invoices_path, notice: "Invoice created successfully."
+    else
+      render action: 'new'
+    end
   end
   
   def update
@@ -20,6 +28,11 @@ class InvoicesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    @invoice.destroy
+    redirect_to invoices_url, notice: 'Invoice was successfully destroyed.'
   end
   
   def filtered
@@ -32,26 +45,13 @@ class InvoicesController < ApplicationController
     redirect_to invoices_path, notice: "Invoice marked successfully."
   end
 
-  def create
-    @invoice = Invoice.new(invoice_params)
-    if @invoice.save
-      redirect_to invoices_path, notice: "Invoice created successfully."
-    else
-      render action: 'new'
+  private
+    def set_invoice
+      @invoice = Invoice.find(params[:id])
     end
-  end
-  
-  def destroy
-    @invoice.destroy
-    redirect_to invoices_url, notice: 'Invoice was successfully destroyed.'
-  end
-  
-  def set_invoice
-    @invoice = Invoice.find(params[:id])
-  end
-  
-  def invoice_params
-    params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date)
-  end
+
+    def invoice_params
+      params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date)
+    end
 
 end
