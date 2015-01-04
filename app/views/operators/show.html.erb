@@ -1,3 +1,6 @@
+<% @item = @operator %>
+<%= render "layouts/magic_item" %>
+
 <%= magic_table(@operator.invoices)%>
 <%= link_to 'Edit', edit_operator_path(@operator) %> |
 <%= link_to 'Back', operators_path %>
