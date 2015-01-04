@@ -5,18 +5,21 @@ module MyTableHelper
       return "no data in collection"
     end
     get_instance_actions(collection.first, action_names)
+    action_names =  ['show']
     columns = get_columns_for_table(collection.first)
     display_standard_table(columns, collection, action_names)
   end
   
   def get_instance_actions(object, action_names)
+    return ['show']
     if action_names.nil?
       if object.respond_to? :default_instance_actions
-        action_names = object.default_instance_actions
+        return action_names = object.default_instance_actions
       else
-        action_names = ['show', 'edit', 'destroy']
+        return action_names = ['show', 'edit', 'destroy']
       end
     end
+    return action_names
   end
   
   private
@@ -52,8 +55,8 @@ module MyTableHelper
       end
     end
   
-  def prepare_action_link(action_name)
-    link_to(action_name, "/invoices/#{action_name}/#{elem.id}")
+  def prepare_action_link(object, action_name)
+    link_to(action_name, "/invoices/#{action_name}/#{object.id}")
   end
 
     def get_columns_for_table(object)
