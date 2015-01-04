@@ -54,6 +54,12 @@ module MyTableHelper
       column_names.each do |cm|
         result << {:name => cm, :display_name => cm}
       end
+      if object.respond_to? :get_virtual_columns
+        column_names = object.get_virtual_columns
+        column_names.each do |cm|
+          result << {:name => cm, :display_name => cm}
+        end
+      end
       return result
     end
   
