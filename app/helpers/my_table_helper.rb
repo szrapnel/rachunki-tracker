@@ -10,7 +10,7 @@ module MyTableHelper
   #   move
   def get_instance_actions(object, action_names)
     return action_names unless action_names.nil?
-    return object.default_instance_actions if object.respond_to? :default_instance_actions
+    return object.class::default_instance_actions if object.class.respond_to? :default_instance_actions
     return ['show', 'edit', 'destroy']
   end
   
@@ -54,8 +54,8 @@ module MyTableHelper
       column_names.each do |cm|
         result << {:name => cm, :display_name => cm}
       end
-      if object.respond_to? :get_virtual_columns
-        column_names = object.get_virtual_columns
+      if object.class.respond_to? :get_virtual_columns
+        column_names = object.class::get_virtual_columns
         column_names.each do |cm|
           result << {:name => cm, :display_name => cm}
         end

@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:destroy, :edit, :update]
+  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done]
   
   def index
     @list = Invoice.all  
@@ -36,12 +36,12 @@ class InvoicesController < ApplicationController
   end
   
   def filtered
-    @list = InvoiceHelper.send(params[:filter_name])
+    @list = InvoiceFilteredHelper.send(params[:filter_name])
     render template: "layouts/magic_view"
   end
   
   def mark_as_done
-    Invoice::mark_as_done(params[:id])
+    @invoice.mark_as_done
 #     redirect_to invoices_path, notice: "Invoice marked successfully."
     redirect_to :back, notice: 'Invoice was successfully destroyed.'
   end

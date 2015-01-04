@@ -1,4 +1,4 @@
-module InvoiceHelper
+module InvoiceFilteredHelper
   
   def self.done
     Invoice.where(done: true)

@@ -3,7 +3,8 @@ require 'test_helper'
 class InvoiceTest < ActiveSupport::TestCase
 
   test "mark as done" do
-    Invoice.mark_as_done(1)
+    invoice = Invoice.find(1)
+    invoice.mark_as_done
     
     org = Invoice.find(1)
     assert org.done
