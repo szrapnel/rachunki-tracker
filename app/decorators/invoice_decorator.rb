@@ -9,7 +9,9 @@ class InvoiceDecorator < Draper::Decorator
     return 'URGENT' if due_date-7.days<NowService::get_now
     return 'COOL' if due_date-2.weeks<NowService::get_now
     return 'FAR AWAY' if due_date-3.weeks<NowService::get_now
-    return 'FAR FAR AWAY'
+    return 'FAR FAR AWAY OR INVALID'
+    #      a co jak nic teraz bedzie far far a powinno byc JAKIES ZUPELNIE INNE
+    #     ej a tak w ogole to jakis enum powinien byc czy cos albo array
   end
   
 end

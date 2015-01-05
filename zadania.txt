@@ -2,6 +2,8 @@ decent exposure
 decent decoration
 
 aktualny sposob uzywania decorate jest slaby bo show operator lezy o kwiczy
+albo expose
+albo decorate childen itp
 
 niech badge gdzies prowadza
 
