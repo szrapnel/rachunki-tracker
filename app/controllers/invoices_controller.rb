@@ -44,7 +44,8 @@ class InvoicesController < ApplicationController
   def filtered
     param = params[:filter_name]
     if InvoiceFilteredHelper.is_filter_name_valid? param
-      @list = InvoiceFilteredHelper.send(param).decorate
+      @list = InvoiceFilteredHelper.send(param)
+      @list = InvoiceDecorator.decorate_collection(@list)
       render template: "layouts/magic_view"
     else
       redirect_to :back, notice: 'Invalid filter name.'
