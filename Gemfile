@@ -55,3 +55,5 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 gem 'simplecov', :require => false, :group => :test
+
+gem "codeclimate-test-reporter", group: :test, require: nil
