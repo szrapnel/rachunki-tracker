@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def magic_item(object)
-    column_names = get_column_names(object)
+    column_names = get_column_names(object)    
     column_names += object.class::get_virtual_columns
     result = ''
     column_names.each do |cm|
@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def magic_show(object)
     column_names = get_column_names(object)
-    column_names += object.class::get_virtual_columns
+    column_names += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
     result = content_tag(:h2, object.class)
 #     result =''
     result += content_tag :table do

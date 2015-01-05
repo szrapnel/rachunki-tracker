@@ -65,6 +65,8 @@ class OperatorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_operator
       @operator = Operator.find(params[:id])
+#       POPRAW TO
+      @operator.invoices = InvoiceDecorator.decorate_collection(@operator.invoices)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

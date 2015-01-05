@@ -1,0 +1,4 @@
+decent exposure
+decent decoration
+
+aktualny sposob uzywania decorate jest slaby bo show operator lezy o kwiczy

@@ -13,7 +13,7 @@ class Invoice < ActiveRecord::Base
   def self.default_model_actions
     return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
   end
- 
+  
   def mark_as_done
     execute_as_done
     NextInvoiceLogic::create_next(self)
