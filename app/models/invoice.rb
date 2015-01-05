@@ -13,19 +13,6 @@ class Invoice < ActiveRecord::Base
   def self.default_model_actions
     return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
   end
-  
-  #   decorator
-#   MOVE
-#   TEST
-  def priority
-    return 'DONE' if self.done
-    return 'OVERDUE' if self.due_date<NowService::get_now
-    return 'CRITICAL' if self.due_date-3.days<NowService::get_now
-    return 'URGENT' if self.due_date-7.days<NowService::get_now
-    return 'COOL' if self.due_date-2.weeks<NowService::get_now
-    return 'FAR AWAY' if self.due_date-3.weeks<NowService::get_now
-    return 'FAR FAR AWAY'
-  end
  
   def mark_as_done
     execute_as_done

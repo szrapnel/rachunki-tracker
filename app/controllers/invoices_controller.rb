@@ -2,12 +2,13 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show]
   
   def index
-    @list = Invoice.all  
+    @list = Invoice.all.decorate
     render template: "layouts/magic_view"
   end
   
   def show
-    @item=@invoice
+    @item=@invoice.decorate
+#     @item=@invoice
     render template: "layouts/_magic_show"
   end
 
@@ -43,7 +44,7 @@ class InvoicesController < ApplicationController
   def filtered
     param = params[:filter_name]
     if InvoiceFilteredHelper.is_filter_name_valid? param
-      @list = InvoiceFilteredHelper.send(param)
+      @list = InvoiceFilteredHelper.send(param).decorate
       render template: "layouts/magic_view"
     else
       redirect_to :back, notice: 'Invalid filter name.'

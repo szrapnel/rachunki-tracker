@@ -2,6 +2,7 @@ module ApplicationHelper
   
   def magic_item(object)
     column_names = get_column_names(object)
+    column_names += object.class::get_virtual_columns
     result = ''
     column_names.each do |cm|
       result += " #{cm}: #{object[cm]}"
@@ -11,6 +12,7 @@ module ApplicationHelper
 
   def magic_show(object)
     column_names = get_column_names(object)
+    column_names += object.class::get_virtual_columns
     result = content_tag(:h2, object.class)
 #     result =''
     result += content_tag :table do
@@ -18,7 +20,11 @@ module ApplicationHelper
         column_names.collect { |cm|
           content_tag :tr do
             concat content_tag(:td, cm).to_s.html_safe
-            concat content_tag(:td, object[cm]).to_s.html_safe
+            if object.respond_to? cm.to_sym
+              concat content_tag(:td, object.send(cm))
+            else
+              concat content_tag(:td, object[cm]).to_s.html_safe
+            end
 #           result += " #{cm}: #{object[cm]}"
 #           concat content_tag(:td, 'aaaa').to_s.html_safe
         end
