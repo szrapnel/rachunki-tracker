@@ -8,6 +8,28 @@ module ApplicationHelper
     end
     return result
   end
+
+  def magic_show(object)
+    column_names = get_column_names(object)
+    result = content_tag(:h2, object.class)
+#     result =''
+    result += content_tag :table do
+#       column_names.each do |cm|
+        column_names.collect { |cm|
+          content_tag :tr do
+            concat content_tag(:td, cm).to_s.html_safe
+            concat content_tag(:td, object[cm]).to_s.html_safe
+#           result += " #{cm}: #{object[cm]}"
+#           concat content_tag(:td, 'aaaa').to_s.html_safe
+        end
+#       end
+          }.to_s.html_safe
+    end
+    result = result.to_s.remove('[').remove(']').remove('"').remove(', ')
+#     raise result
+    return result.to_s.html_safe
+  end
+
    
   def magic_list(list)
     #     TODO koniecznie przepisz ta fjce na partial albo content_tag
