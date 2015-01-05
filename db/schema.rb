@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228205145) do
+ActiveRecord::Schema.define(version: 20150105095759) do
 
   create_table "invoices", force: true do |t|
     t.decimal  "value"
     t.integer  "operator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "done",        default: false
+    t.boolean  "done",           default: false
     t.string   "title"
     t.date     "due_date"
     t.date     "done_date"
+    t.boolean  "valid_due_date"
   end
 
   add_index "invoices", ["operator_id"], name: "index_invoices_on_operator_id"

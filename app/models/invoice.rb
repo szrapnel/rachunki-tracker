@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
   before_save :clear_done_date_if_undone
   
   def self.default_instance_actions
-    return ['mark_as_done', 'show', 'edit', 'destroy']
+    return ['mark_as_done', 'show', 'edit', 'destroy', 'mark_valid_due_date_true', 'mark_valid_due_date_false']
   end
   
   def self.get_virtual_columns
@@ -28,6 +28,11 @@ class Invoice < ActiveRecord::Base
   def mark_as_done
     execute_as_done
     NextInvoiceLogic::create_next(self)
+  end
+  
+  def mark_valid_due_date(value)
+    self.valid_due_date = value
+    self.save
   end
 
   private

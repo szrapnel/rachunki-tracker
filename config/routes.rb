@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   
   get 'invoices/mark_as_done/:id' => 'invoices#mark_as_done'
   
+  get 'invoices/mark_valid_due_date_true/:id' => 'invoices#mark_valid_due_date_true'
+  
+  get 'invoices/mark_valid_due_date_false/:id' => 'invoices#mark_valid_due_date_false'
+  
   get 'invoices/filtered/:filter_name' => 'invoices#filtered'
   
   get 'invoices/done' => 'invoices#done'
@@ -30,6 +34,8 @@ Rails.application.routes.draw do
   
   #   popraw to bo nie get
   get 'invoices/destroy/:id' => 'invoices#destroy'
+  
+    get 'invoices/show/:id' => 'invoices#show'
   
   get 'invoices/edit/:id' => 'invoices#edit'
   patch 'invoices/update/:id' => 'invoices#update'

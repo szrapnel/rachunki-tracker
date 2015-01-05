@@ -1,9 +1,14 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done]
+  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show]
   
   def index
     @list = Invoice.all  
     render template: "layouts/magic_view"
+  end
+  
+  def show
+    @item=@invoice
+    render template: "layouts/_magic_show"
   end
 
   def new
@@ -45,14 +50,28 @@ class InvoicesController < ApplicationController
 #     redirect_to invoices_path, notice: "Invoice marked successfully."
     redirect_to :back, notice: 'Invoice was successfully destroyed.'
   end
+  
+  def mark_valid_due_date_true
+    execute_mark_valid_due_date true
+  end
+  
+  def mark_valid_due_date_false
+    execute_mark_valid_due_date false
+  end
 
   private
+  
     def set_invoice
       @invoice = Invoice.find(params[:id])
     end
 
     def invoice_params
       params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date)
+    end
+  
+  def execute_mark_valid_due_date(value)
+      @invoice.mark_valid_due_date(value)
+      redirect_to :back, notice: 'Invoice was successfully marked.'
     end
 
 end

@@ -11,9 +11,13 @@ class NextInvoiceLogic
   
   private
   
+#   REFAC
     def self.calculate_new_due_date(invoice)
       unless invalid_data_for_new_due_date?(invoice)
-        return invoice.due_date+invoice.operator.days_between_invoices.days
+        return invoice.due_date+1.month if invoice.operator.days_between_invoices==30
+        return invoice.due_date+2.month if invoice.operator.days_between_invoices==60
+                return invoice.due_date+invoice.operator.days_between_invoices.days
+        return 
       end
     end
 

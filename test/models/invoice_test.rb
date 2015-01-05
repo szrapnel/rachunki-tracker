@@ -16,4 +16,18 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal org.operator, last.operator
   end
   
+  test "mark_valid_due_date with true" do
+    invoice = Invoice.find(1)
+    invoice.mark_valid_due_date true
+    invoice = Invoice.find(1)
+    assert_equal invoice.valid_due_date, true
+  end
+
+  test "mark_valid_due_date with false" do
+    invoice = Invoice.find(1)
+    invoice.mark_valid_due_date false
+    invoice = Invoice.find(1)
+    assert_equal invoice.valid_due_date, false
+  end
+  
 end
