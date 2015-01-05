@@ -51,8 +51,10 @@ end
 
 #////////////////////// my gems
 
-gem 'better_errors'
-gem 'binding_of_caller'
+gem 'better_errors', :require => false, :group => :development
+gem 'binding_of_caller', :require => false, :group => :development
+
+# sprawdz co robi require
 
 gem 'simplecov', :require => false, :group => :test
 
