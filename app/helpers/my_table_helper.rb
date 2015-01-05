@@ -8,7 +8,7 @@ module MyTableHelper
   end
   
   #   move
-  def get_instance_actions(object, action_names)
+  def get_instance_actions(object, action_names=nil)
     return action_names unless action_names.nil?
     return object.class::default_instance_actions if object.class.respond_to? :default_instance_actions
     return ['show', 'edit', 'destroy']
@@ -37,6 +37,7 @@ module MyTableHelper
       content_tag :table, thead.concat(tbody)
     end
 
+    #     usun default value actions_names
     def concat_actions(elem, action_names=[]) 
       action_names.each do |action_name|
         concat content_tag(:td, prepare_action_link(elem, action_name)).to_s.html_safe

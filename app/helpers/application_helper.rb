@@ -55,6 +55,16 @@ module ApplicationHelper
     end
     return result.html_safe
   end
+
+  def prepare_actions(elem) 
+    action_names = get_instance_actions(elem)
+    result = ''
+    action_names.each do |action_name|
+      result += prepare_action_link(elem, action_name)
+      result += ' | '
+    end
+    return result.to_s.html_safe
+  end
   
   private 
 
