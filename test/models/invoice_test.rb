@@ -30,4 +30,13 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal invoice.valid_due_date, false
   end
   
+  test "clear done_date if not done" do
+    invoice = Invoice.find 4
+    invoice.done=false
+    invoice.save
+    
+    invoice = Invoice.find 4
+    assert_equal invoice.done_date, nil
+  end
+  
 end

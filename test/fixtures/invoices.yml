@@ -20,3 +20,11 @@ three:
   operator_id: 2
   done: true
   title: "ZZ"
+  
+four:
+  id: 4
+  value: 7.77
+  operator_id: 2
+  done: true
+  done_date: Date.today
+  title: "ZZ"

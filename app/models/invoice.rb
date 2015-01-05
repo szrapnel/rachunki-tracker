@@ -15,6 +15,8 @@ class Invoice < ActiveRecord::Base
   end
   
   #   decorator
+#   MOVE
+#   TEST
   def priority
     return 'DONE' if self.done
     return 'OVERDUE' if self.due_date<NowService::get_now
