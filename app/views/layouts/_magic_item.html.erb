@@ -1,11 +1,11 @@
 <br/>
-<h3>item</h3>
+<h3>Item</h3>
 <br/>
 <% if @item.nil? %>
   <%= 'needed item variable' %>
 <% else %>
   <%= magic_item(@item) %>
+  <%= prepare_actions(@item) %>
 <% end %>
 <br/>
-<%= prepare_actions(@item) %>
 <br/>
