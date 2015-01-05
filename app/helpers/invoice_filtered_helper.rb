@@ -1,5 +1,10 @@
 module InvoiceFilteredHelper
   
+  def self.is_filter_name_valid? filter_name
+    filters = ['done', 'latest', 'overdue', 'fancy', 'not_done']
+    return filters.include? filter_name
+  end
+  
   def self.done
     Invoice.where(done: true)
   end

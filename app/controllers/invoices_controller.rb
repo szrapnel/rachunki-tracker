@@ -41,8 +41,13 @@ class InvoicesController < ApplicationController
   end
   
   def filtered
-    @list = InvoiceFilteredHelper.send(params[:filter_name])
-    render template: "layouts/magic_view"
+    param = params[:filter_name]
+    if InvoiceFilteredHelper.is_filter_name_valid? param
+      @list = InvoiceFilteredHelper.send(param)
+      render template: "layouts/magic_view"
+    else
+      redirect_to :back, notice: 'Invalid filter name.'
+    end
   end
   
   def mark_as_done
