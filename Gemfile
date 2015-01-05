@@ -51,8 +51,8 @@ end
 
 #////////////////////// my gems
 
-gem 'better_errors', :require => false, :group => :development
-gem 'binding_of_caller', :require => false, :group => :development
+# gem 'better_errors', :require => false, :group => :development
+# gem 'binding_of_caller', :require => false, :group => :development
 
 # sprawdz co robi require
 
