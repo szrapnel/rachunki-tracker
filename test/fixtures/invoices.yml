@@ -26,5 +26,5 @@ four:
   value: 7.77
   operator_id: 2
   done: true
-  done_date: Date.today
+  done_date: '05 01 2014'
   title: "ZZ"
