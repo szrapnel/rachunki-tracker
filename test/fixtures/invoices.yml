@@ -5,7 +5,7 @@ one:
   value: 5.55
   operator_id: 1
   done: false
-  done_date: '06-01-2012'
+  done_date: '05-01-2012'
   title: "I"
 
 two:
@@ -13,7 +13,7 @@ two:
   value: 9.99
   operator_id: 1
   done: true
-  done_date: '06-01-2012'
+  done_date: '05-01-2012'
   title: "X"
   
 three:
@@ -21,7 +21,7 @@ three:
   value: 7.77
   operator_id: 2
   done: true
-  done_date: '05-01-2015'
+  done_date: '05-01-2016'
   title: "ZZ"
   
 four:
@@ -29,5 +29,5 @@ four:
   value: 7.77
   operator_id: 3
   done: true
-  done_date: '05-01-2014'
+  done_date: '05-01-2015'
   title: "ZZ"

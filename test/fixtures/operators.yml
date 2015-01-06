@@ -6,3 +6,11 @@ two:
   id: 2
   days_between_invoices: 30
   
+three:
+  id: 3
+  days_between_invoices: 30
+  
+four:
+  id: 4
+  days_between_invoices: 30
+  

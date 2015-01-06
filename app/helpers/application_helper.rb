@@ -2,7 +2,7 @@ module ApplicationHelper
   
   def magic_item(object)
     column_names = get_column_names(object)    
-    column_names += object.class::get_virtual_columns
+    column_names += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
     result = ''
     column_names.each do |cm|
       result += " #{cm}: #{object[cm]}"
@@ -44,9 +44,11 @@ module ApplicationHelper
       result += magic_item(item)
       # TODO to nie jest magic tylko kaszana
       #       mam juz metody aby to bylo dobrze uzyj ich
-      result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}" unless item.done
-      result += link_to "Destroy", "/invoices/destroy/#{item.id}"
-      result += link_to "Edit", "/invoices/edit/#{item.id}"
+#       result += link_to "Mark As Done", "/invoices/mark_as_done/#{item.id}" unless item.done
+#       result += link_to "Destroy", "/invoices/destroy/#{item.id}"
+#       result += link_to "Edit", "/invoices/edit/#{item.id}"
+      
+      result += prepare_actions(item)
       result += tag('br')
     end
     return result.html_safe
@@ -62,6 +64,7 @@ module ApplicationHelper
     return result.html_safe
   end
 
+    #     rename
   def prepare_actions(elem) 
     action_names = get_instance_actions(elem)
     result = ''
