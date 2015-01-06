@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #   root 'invoices#index'
   root 'invoices#filtered', filter_name: 'fancy'
   
+  get 'operators/abandoned' => 'operators#abandoned'
   resources :operators
   
 #   resources :operators do

@@ -61,6 +61,11 @@ class OperatorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def abandoned
+    @list = OperatorsHelper.get_abandoned_operators
+    render template: "layouts/magic_view"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
