@@ -2,7 +2,7 @@ module ApplicationHelper
   
   def magic_item(object)
     column_names = get_column_names(object)    
-    column_names += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
+    column_names += get_virtual_column_names(object)
     result = ''
     column_names.each do |cm|
       result += " #{cm}: #{object[cm]}"
@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def magic_show(object)
     column_names = get_column_names(object)
-    column_names += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
+    column_names += get_virtual_column_names(object)
     result = content_tag(:h2, object.class)
 #     result =''
     result += content_tag :table do
@@ -36,6 +36,12 @@ module ApplicationHelper
     return result.to_s.html_safe
   end
 
+  def get_virtual_column_names(object)
+    result = []
+    result += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
+    return result
+  end
+
    
   def magic_list(list)
     #     TODO koniecznie przepisz ta fjce na partial albo content_tag
@@ -54,12 +60,12 @@ module ApplicationHelper
     return result.html_safe
   end
    
+   def get_column_names(object)
+     column_names = object.class.column_names
+     execute_black_list_column_names(column_names)
+   end
+   
   private 
-
-    def get_column_names(object)
-      column_names = object.class.column_names
-      execute_black_list_column_names(column_names)
-    end
 
     def execute_black_list_column_names(column_names)
       column_names.delete('updated_at')

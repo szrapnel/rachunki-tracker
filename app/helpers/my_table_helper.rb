@@ -40,6 +40,7 @@ module MyTableHelper
     def get_columns_for_table(object)
       result = []
       column_names = get_column_names(object)
+      # TODO czy tutaj tez virtual
       column_names.each do |cm|
         result << {:name => cm, :display_name => cm}
       end
