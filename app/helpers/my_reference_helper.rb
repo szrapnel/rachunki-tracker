@@ -4,7 +4,10 @@ module MyReferenceHelper
     if check_if_field_is_reference(field_name)
       return get_referenced_value(object, field_name)
     else
-      return object.instance_eval(field_name)
+#       return object.instance_eval(field_name)
+#       puts field_name
+#       return field_name
+      return object[field_name]
     end
   end
 
