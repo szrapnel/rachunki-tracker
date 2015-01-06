@@ -1,0 +1,8 @@
+one:
+  id: 1
+  days_between_invoices: 30
+
+two:
+  id: 2
+  days_between_invoices: 30
+  
