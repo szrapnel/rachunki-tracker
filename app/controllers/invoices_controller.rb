@@ -2,6 +2,12 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show]
   before_action :authenticate_user!
   
+  def status
+  	@invoices = InvoiceFilteredHelper.fancy
+    @operators = OperatorsHelper.get_abandoned_operators
+    render template: "layouts/status"
+  end
+  
   def index
     @list = Invoice.all.decorate
     render template: "layouts/magic_view"

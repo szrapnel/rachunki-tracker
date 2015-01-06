@@ -1,6 +1,7 @@
 module MyTableHelper
   
   def magic_table(collection={}, action_names=nil)
+    #     moze nil tez tutaj do ifa dodaj
     return "no data in collection" if collection.empty?
     action_names = get_instance_actions(collection.first, action_names)
     columns = get_columns_for_table(collection.first)
