@@ -7,13 +7,6 @@ module MyTableHelper
     display_standard_table(columns, collection, action_names)
   end
   
-  #   move
-  def get_instance_actions(object, action_names=nil)
-    return action_names unless action_names.nil?
-    return object.class::default_instance_actions if object.class.respond_to? :default_instance_actions
-    return ['show', 'edit', 'destroy']
-  end
-  
   private
     def display_standard_table(columns, collection = {}, action_names)
       thead = content_tag :thead do
@@ -42,11 +35,6 @@ module MyTableHelper
       action_names.each do |action_name|
         concat content_tag(:td, prepare_action_link(elem, action_name)).to_s.html_safe
       end
-    end
-  
-  #   move
-    def prepare_action_link(object, action_name)
-      link_to(action_name, "/invoices/#{action_name}/#{object.id}")
     end
 
     def get_columns_for_table(object)
