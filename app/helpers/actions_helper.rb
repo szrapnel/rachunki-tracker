@@ -4,7 +4,7 @@ module ActionsHelper
     result = ''  
     default_model_actions = get_default_model_actions(model)
     default_model_actions.each do |action|
-      result += link_to action, "/#{model.to_s.camelize(:lower)}s/#{action}"
+      result += prepare_static_action_link(model, action)
       result += tag('br')
     end
     return result.html_safe
@@ -30,7 +30,18 @@ module ActionsHelper
 
   #   move
   def prepare_action_link(object, action_name)
-    link_to(action_name, "/invoices/#{action_name}/#{object.id}")
+    controller = "#{object.class.to_s.camelize(:lower)}s"
+    #     TODO BUG
+    controller = 'invoices' if controller=='invoiceDecorators'
+    return link_to(action_name, "/#{controller}/#{object.id}") if action_name=='show'
+    link_to(action_name, "/#{controller}/#{action_name}/#{object.id}")
+  end
+    
+  def prepare_static_action_link(model, action)
+    controller = "#{model.to_s.camelize(:lower)}s"
+#     TODO BUG
+    cotroller = 'invoices' if controller=='invoiceDecorators'
+    link_to action, "/#{controller}/#{action}"
   end
 
   # nie wiem czy to nie powtorzenie default instance actions

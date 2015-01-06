@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   #   popraw to bo nie get
   get 'invoices/destroy/:id' => 'invoices#destroy'
   
-    get 'invoices/show/:id' => 'invoices#show'
+  get 'invoices/:id' => 'invoices#show'
   
   get 'invoices/edit/:id' => 'invoices#edit'
   patch 'invoices/update/:id' => 'invoices#update'
