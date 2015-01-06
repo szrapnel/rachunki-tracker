@@ -11,7 +11,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.default_model_actions
-    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
+    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new', 'status']
   end
   
   def mark_as_done

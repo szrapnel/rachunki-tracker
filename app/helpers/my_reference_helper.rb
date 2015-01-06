@@ -5,9 +5,9 @@ module MyReferenceHelper
       return get_referenced_value(object, field_name)
     else
 #       return object.instance_eval(field_name)
-#       puts field_name
-#       return field_name
-      return object[field_name]
+#       raise object.inspect
+#       return object[field_name]
+      get_field_or_virtual_field_value(object, field_name)
     end
   end
 

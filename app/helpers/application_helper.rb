@@ -20,11 +20,12 @@ module ApplicationHelper
         column_names.collect { |cm|
           content_tag :tr do
             concat content_tag(:td, cm).to_s.html_safe
-            if object.respond_to? cm.to_sym
-              concat content_tag(:td, object.send(cm))
-            else
-              concat content_tag(:td, object[cm]).to_s.html_safe
-            end
+#             if object.respond_to? cm.to_sym
+#               concat content_tag(:td, object.send(cm))
+#             else
+#               concat content_tag(:td, object[cm]).to_s.html_safe
+#             end
+            concat content_tag(:td, get_field_or_virtual_field_value(object, cm)).to_s.html_safe
 #           result += " #{cm}: #{object[cm]}"
 #           concat content_tag(:td, 'aaaa').to_s.html_safe
         end
@@ -34,6 +35,14 @@ module ApplicationHelper
     result = result.to_s.remove('[').remove(']').remove('"').remove(', ')
 #     raise result
     return result.to_s.html_safe
+  end
+
+  def get_field_or_virtual_field_value(object, field_name)
+    if object.respond_to? field_name.to_sym
+      return object.send(field_name)
+    else
+      return object[field_name]
+    end
   end
 
   def get_virtual_column_names(object)
