@@ -58,7 +58,7 @@ module ApplicationHelper
     result = ''  
     default_model_actions = get_default_model_actions(model)
     default_model_actions.each do |action|
-      result += link_to action, "/invoices/#{action}"
+      result += link_to action, "/#{model.to_s.camelize(:lower)}s/#{action}"
       result += tag('br')
     end
     return result.html_safe
