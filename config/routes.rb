@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   #   root 'invoices#index'
   root 'invoices#filtered', filter_name: 'fancy'
   
