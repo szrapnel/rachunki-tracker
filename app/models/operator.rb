@@ -9,6 +9,10 @@ class Operator < ActiveRecord::Base
     return ['new', 'abandoned']
   end
   
+  def invoices_decorated
+    return InvoiceDecorator.decorate_collection(invoices)
+  end
+  
   def check_if_abandoned?
     
     last_done_date = get_last_done_date

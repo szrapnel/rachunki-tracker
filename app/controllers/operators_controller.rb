@@ -72,7 +72,10 @@ class OperatorsController < ApplicationController
     def set_operator
       @operator = Operator.find(params[:id])
 #       POPRAW TO
-      @operator.invoices = InvoiceDecorator.decorate_collection(@operator.invoices)
+      #       TODO jak to zrobic aby nie zmienialo wpisow w bazie
+#       @operator.invoices = InvoiceDecorator.decorate_collection(is)
+#       @operator.assign_attributes({ :invoices => []})
+#       @operator.invoices = []
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
