@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'invoices/status' => 'invoices#status'
   
   get 'operators/abandoned' => 'operators#abandoned'
+  get 'operators/destroy/:id' => 'operators#destroy'
   resources :operators
   
 #   resources :operators do

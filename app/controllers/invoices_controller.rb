@@ -63,9 +63,13 @@ class InvoicesController < ApplicationController
   end
   
   def mark_as_done
-    @invoice.mark_as_done
-#     redirect_to invoices_path, notice: "Invoice marked successfully."
-    redirect_to :back, notice: 'Invoice was successfully destroyed.'
+    #     a moze sprawdz czy valid po prostu
+    if @invoice.mark_as_done
+  #     redirect_to invoices_path, notice: "Invoice marked successfully."
+      redirect_to :back, notice: 'Invoice was successfully marked.'
+    else
+      redirect_to :back, alert: 'Incorrect data.'
+    end
   end
   
   def mark_valid_due_date_true
