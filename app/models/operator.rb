@@ -4,7 +4,7 @@ class Operator < ActiveRecord::Base
   validates :name, presence: true
   
   def self.get_virtual_columns
-    return ['get_last_done_date']
+    return ['get_last_done_date', 'valid?']
   end
   
   def self.default_model_actions
