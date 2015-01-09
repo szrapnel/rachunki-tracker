@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   get 'operators/abandoned' => 'operators#abandoned'
   get 'operators/destroy/:id' => 'operators#destroy'
+  get 'operators/edit/:id' => 'operators#edit'
   resources :operators
   
 #   resources :operators do
