@@ -81,6 +81,6 @@ class OperatorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def operator_params
 #       params[:operator]
-      params.require(:operator).permit(:name)
+      params.require(:operator).permit(:name, :days_between_invoices)
     end
 end
