@@ -68,7 +68,7 @@ class InvoicesController < ApplicationController
   #     redirect_to invoices_path, notice: "Invoice marked successfully."
       redirect_to :back, notice: 'Invoice was successfully marked.'
     else
-      redirect_to :back, alert: 'Incorrect data.'
+      redirect_to :back, alert: 'Incorrect data to mark.'
     end
   end
   

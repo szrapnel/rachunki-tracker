@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
 
-  test "mark as done" do
+  test "mark as done success" do
     invoice = Invoice.find(1)
     invoice.mark_as_done
     
@@ -14,6 +14,14 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal TitleGenerator::get_next_title(org.title), last.title
     assert_equal false, last.done
     assert_equal org.operator, last.operator
+  end
+  
+  test "mark as done failure" do
+    invoice = Invoice.find(2)
+    last_invoice = Invoice.last
+    
+    assert_equal false, invoice.mark_as_done
+    assert_equal last_invoice, Invoice.last
   end
   
   test "mark_valid_due_date with true" do
