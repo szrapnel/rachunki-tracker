@@ -16,7 +16,7 @@ class Operator < ActiveRecord::Base
   end
   
   def check_if_abandoned?
-    
+    return true if days_between_invoices.nil?
     last_done_date = get_last_done_date
     return true if last_done_date == 'NEVER DONE'
     return last_done_date+days_between_invoices < NowService::get_now
