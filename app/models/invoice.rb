@@ -20,6 +20,7 @@ class Invoice < ActiveRecord::Base
   def mark_as_done
     return false if self.done
     return false unless self.valid?
+    return false if self.value.nil?
     NextInvoiceLogic::create_next(self)
     execute_as_done
   end
