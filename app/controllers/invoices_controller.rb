@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show]
+  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show, :copy_value_from_last]
   before_action :authenticate_user!
   
   def status
@@ -66,9 +66,17 @@ class InvoicesController < ApplicationController
     #     a moze sprawdz czy valid po prostu
     if @invoice.mark_as_done
   #     redirect_to invoices_path, notice: "Invoice marked successfully."
-      redirect_to :back, notice: 'Invoice was successfully marked.'
+      redirect_after_success 'Invoice was successfully marked.'
     else
-      redirect_to :back, alert: 'Incorrect data to mark.'
+      redirect_after_failure 'Incorrect data to mark.'
+    end
+  end
+  
+  def copy_value_from_last
+    if @invoice.copy_value_from_last
+      redirect_to :back, notice: 'Value copied successfuly.'
+    else
+      redirect_to :back, alert: 'Invalid data.'
     end
   end
   

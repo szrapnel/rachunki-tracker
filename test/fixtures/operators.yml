@@ -14,3 +14,15 @@ four:
   id: 4
   days_between_invoices: 30
   
+five:
+  id: 5
+  days_between_invoices: 30
+  
+six:
+  id: 6
+  days_between_invoices: 30
+  
+seven:
+  id: 7
+  days_between_invoices: 30
+  

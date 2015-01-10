@@ -46,5 +46,35 @@ class InvoiceTest < ActiveSupport::TestCase
     invoice = Invoice.find 4
     assert_equal invoice.done_date, nil
   end
+  #----------------------------------------------------
+  test "copy_value_from_last success" do
+    invoice = Invoice.find 6
+    result = invoice.copy_value_from_last
+    assert_equal true, result
+  end
+  
+  test "copy_value_from_last failure already has value" do
+    invoice = Invoice.find 8
+    result = invoice.copy_value_from_last
+    assert_equal false, result
+  end
+  
+  test "copy_value_from_last failure operator nil" do
+    invoice = Invoice.find 9
+    result = invoice.copy_value_from_last
+    assert_equal false, result
+  end
+  
+  test "copy_value_from_last failure last nil" do
+    invoice = Invoice.find 10
+    result = invoice.copy_value_from_last
+    assert_equal false, result
+  end
+  
+  test "copy_value_from_last failure last value nil too" do
+    invoice = Invoice.find 12
+    result = invoice.copy_value_from_last
+    assert_equal false, result
+  end
   
 end

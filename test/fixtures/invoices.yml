@@ -1,5 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
+#mark as done success
+#mark_valid_due_date with true
+#mark_valid_due_date with false
 one:
   id: 1
   value: 5.55
@@ -8,6 +12,7 @@ one:
   done_date: '05-01-2012'
   title: "I"
 
+#mark as done failure
 two:
   id: 2
   value: 9.99
@@ -24,6 +29,7 @@ three:
   done_date: '05-01-2016'
   title: "ZZ"
   
+#clear done_date if not done
 four:
   id: 4
   value: 7.77
@@ -31,3 +37,50 @@ four:
   done: true
   done_date: '05-01-2015'
   title: "ZZ"
+  
+#use as last for 6
+five:
+  id: 5
+  value: 7.77
+  operator_id: 7
+  title: "ZZ"
+  
+#copy_value_from_last success
+six:
+  id: 6
+  operator_id: 7
+  title: "ZZ" 
+  
+#use as last for 8
+seven:
+  id: 7
+  value: 7.77
+  operator_id: 4
+  title: "ZZ"
+  
+#copy_value_from_last failure already has value
+eight:
+  id: 8
+  value: 7.77
+  operator_id: 4
+  title: "ZZ" 
+  
+#copy_value_from_last failure operator nil
+nine:
+  id: 9
+  title: "ZZ" 
+  
+#copy_value_from_last failure last nil
+ten:
+  id: 10
+  operator_id: 5
+ 
+#use as last for 12
+eleven: 
+  id: 11
+  operator_id: 6
+  
+#copy_value_from_last failure last value nil too
+twelve:
+  id: 12
+  operator_id: 6

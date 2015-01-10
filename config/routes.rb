@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'invoices/status' => 'invoices#status'
   
+  get 'invoices/copy_value_from_last/:id' => 'invoices#copy_value_from_last'
+  
   get 'operators/abandoned' => 'operators#abandoned'
   get 'operators/destroy/:id' => 'operators#destroy'
   get 'operators/edit/:id' => 'operators#edit'
