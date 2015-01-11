@@ -36,9 +36,10 @@ class Operator < ActiveRecord::Base
   end
   
   def get_last_done_date
-    return 'NEVER DONE' if invoices.empty?
-    last_done_date = invoices.order("done_date DESC").first.done_date
-    return 'NEVER DONE' if last_done_date.nil?
+    done_invoices = invoices.where.not({done_date:nil})
+    return 'NEVER DONE' if done_invoices.empty?
+    last_done_date = done_invoices.order("done_date DESC").first.done_date
+#     return 'NEVER DONE' if last_done_date.nil?
     return last_done_date
   end
   
