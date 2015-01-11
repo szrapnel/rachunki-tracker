@@ -4,6 +4,8 @@ class Invoice < ActiveRecord::Base
   
 #   validates :title, presence: true
   
+  #   moja kolumna valid for logic pozwala dodac kulawy ale nie pozwala go przetwarzac przed poprawieniem
+  
   def self.default_instance_actions
     return ['mark_as_done', 'show', 'edit', 'destroy', 'mark_valid_due_date_true', 'mark_valid_due_date_false', 'copy_value_from_last']
   end
