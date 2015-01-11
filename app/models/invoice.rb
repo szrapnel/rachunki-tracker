@@ -50,7 +50,7 @@ class Invoice < ActiveRecord::Base
     
     def execute_as_done
       self.done = true
-      self.done_date = DateTime.now.to_date
+      self.done_date = NowService::get_now
       self.save
     end
 
