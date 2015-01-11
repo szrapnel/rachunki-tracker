@@ -7,6 +7,11 @@ class OperatorsController < ApplicationController
   def index
     @operators = Operator.all
   end
+  
+  def magic_index
+    @list = Operator.all
+    render template: "layouts/magic_view"
+  end
 
   # GET /operators/1
   # GET /operators/1.json
