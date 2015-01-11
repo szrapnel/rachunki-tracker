@@ -1,6 +1,6 @@
 class NowService
   
-  @@session=1
+  @@session=nil
   
   def self.set_session(session)
     @@session = session
