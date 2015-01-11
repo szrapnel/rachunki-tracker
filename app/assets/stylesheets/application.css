@@ -14,6 +14,8 @@
  *= require_self
  */
 
-tr:nth-child(even) {background: #CCC}
+tr:nth-child(even) { background: #CCC }
 
-table {background: #EEE}
+tr:hover { background-color: #AAC; }
+
+table { background: #EEE }
