@@ -21,6 +21,7 @@ class Invoice < ActiveRecord::Base
     return false if self.done
     return false unless self.valid?
     return false if self.value.nil?
+    return false if self.title.nil?
     NextInvoiceLogic::create_next(self)
     execute_as_done
   end
