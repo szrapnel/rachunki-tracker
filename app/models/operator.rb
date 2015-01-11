@@ -15,6 +15,14 @@ class Operator < ActiveRecord::Base
     return InvoiceDecorator.decorate_collection(invoices)
   end
   
+  def invoices_done_decorated
+    return InvoiceDecorator.decorate_collection(invoices.where({done:true}))
+  end
+  
+  def invoices_not_done_decorated
+    return InvoiceDecorator.decorate_collection(invoices.where({done:false}))
+  end
+  
   def check_if_abandoned?
     return true if days_between_invoices.nil?
     last_done_date = get_last_done_date

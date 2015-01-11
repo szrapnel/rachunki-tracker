@@ -1,6 +1,12 @@
 <% @item = @operator %>
 <%= render "layouts/magic_show" %>
 
+<h2>done</h2>
+<%= magic_table(@operator.invoices_done_decorated)%>
+<h2>not done</h2>
+<%= magic_table(@operator.invoices_not_done_decorated)%>
+------------------------------------------------------------
+<h2>all</h2>
 <%= magic_table(@operator.invoices_decorated)%>
 <%= link_to 'Edit', edit_operator_path(@operator) %> |
 <%= link_to 'Back', operators_path %>
