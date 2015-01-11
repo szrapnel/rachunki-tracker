@@ -11,7 +11,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.get_virtual_columns
-    return ['priority', 'valid?']
+    return ['priority', 'valid?', 'logic_valid?']
     #     w sumie valid moze chce zawsze miec na wszystkich z automatu
   end
   
@@ -44,6 +44,13 @@ class Invoice < ActiveRecord::Base
   def mark_valid_due_date(value)
     self.valid_due_date = value
     self.save
+  end
+  
+  def logic_valid?
+    return false if done && done_date.nil?
+    return false if value.nil?
+    return false if title.nil?
+    return true
   end
 
   private
