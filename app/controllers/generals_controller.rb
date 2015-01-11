@@ -12,12 +12,14 @@ class GeneralsController < ApplicationController
   
   def set_now(now=params[:actual_date])
     if now.nil?
-      now = Date.today
+#       now = Date.today
     else
-      begin
-         Date.parse(now)
-      rescue ArgumentError
-        raise 'invalid argument exception, expected valid date string for example "10-01-2014"'
+      unless now.class==Date.today.class
+        begin
+           Date.parse(now)
+        rescue ArgumentError
+          raise 'invalid argument exception, expected valid date string for example "10-01-2014"'
+        end
       end
     end
     user_session[:actual_date] = now

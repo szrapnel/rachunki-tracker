@@ -58,6 +58,8 @@ end
 # gem 'better_errors', :require => false, :group => :development
 # gem 'binding_of_caller', :require => false, :group => :development
 # nie wiem czemu one nie dzialaja z travisem ale bedzie to trzeba jakos ogarnac jeszcze
+# z heroku tez nie
+# moze wina wersji tylko travic pisze o jakiejs niezgodnosci miedzy 210 a 200
 
 # sprawdz co robi require
 
