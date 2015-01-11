@@ -31,7 +31,8 @@ class InvoicesController < ApplicationController
   
   def update
     if @invoice.update(invoice_params)
-      redirect_to invoices_path, notice: 'Invoice was successfully updated.'
+#       redirect_to invoices_path, notice: 'Invoice was successfully updated.'
+      redirect_after_success 'Invoice was successfully updated.'
     else
       render :edit
     end
