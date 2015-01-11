@@ -22,7 +22,7 @@ class OperatorTest < ActiveSupport::TestCase
   
   test "get_last_done_date valid date" do
     operator = Operator.find 1
-    assert_equal '05-01-2012'.to_date, operator.get_last_done_date
+    assert_equal 'Thu, 05 Jan 2012'.to_date, operator.get_last_done_date
   end
   
   test "get_last_done_date valid NEVER DONE" do

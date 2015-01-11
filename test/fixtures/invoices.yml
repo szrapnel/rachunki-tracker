@@ -9,7 +9,7 @@ one:
   value: 5.55
   operator_id: 1
   done: false
-  done_date: '05-01-2012'
+  done_date: 'Thu, 05 Jan 2012'
   title: "I"
 
 #mark as done failure
@@ -18,7 +18,7 @@ two:
   value: 9.99
   operator_id: 1
   done: true
-  done_date: '05-01-2012'
+  done_date: 'Thu, 05 Jan 2012'
   title: "X"
   
 three:
