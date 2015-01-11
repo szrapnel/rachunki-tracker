@@ -22,5 +22,8 @@ module Invoices
 
     #     TODO nie wiem czy to tutaj i czy potrzebne bo to dla heroku i rails 3.2
 #     config.assets.initialize_on_precompile = false
+    
+    config.serve_static_assets = true
+    
   end
 end
