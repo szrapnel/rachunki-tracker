@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   #   root 'invoices#index'
   root 'invoices#filtered', filter_name: 'fancy'
 
-  get 'invoices/status' => 'invoices#status'
+  get 'status' => 'generals#status'
+  get 'set_now' => 'generals#set_now'
+  get 'set_now/:actual_date' => 'generals#set_now'
+  get 'now_plus_time_in_weeks/:number_of_weeks' => 'generals#now_plus_time_in_weeks'
+  get 'now_minus_time_in_weeks/:number_of_weeks' => 'generals#now_minus_time_in_weeks'
   
   get 'invoices/copy_value_from_last/:id' => 'invoices#copy_value_from_last'
   

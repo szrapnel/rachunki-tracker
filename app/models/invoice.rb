@@ -14,7 +14,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.default_model_actions
-    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new', 'status']
+    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
   end
   
   def mark_as_done
@@ -25,8 +25,6 @@ class Invoice < ActiveRecord::Base
     execute_as_done
   end
   
-
-  
   def copy_value_from_last
     return false unless is_value_from_last_accesible?
     return false unless value.nil?
@@ -35,17 +33,7 @@ class Invoice < ActiveRecord::Base
     self.save
     return true
   end
-  
-  #   uprosc ten kod zwracaj nil jak nie mozesz zwrocic value i koniec
-  
-  def is_value_from_last_accesible?
-    return false if operator.nil?
-    return false if operator.invoices.count < 2
-    last_invoice_value = get_last_invoice_before_me_value
-    return false if last_invoice_value.nil?
-    return true
-  end
-  
+    
   def get_last_invoice_before_me_value
     return operator.invoices.where.not( {id:id} ).last.value
   end
@@ -65,6 +53,14 @@ class Invoice < ActiveRecord::Base
 
     def clear_done_date_if_undone
       self.done_date = nil unless self.done
+    end
+  
+    def is_value_from_last_accesible?
+      return false if operator.nil?
+      return false if operator.invoices.count < 2
+      last_invoice_value = get_last_invoice_before_me_value
+      return false if last_invoice_value.nil?
+      return true
     end
     
 end

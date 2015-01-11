@@ -2,15 +2,6 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_done, :mark_valid_due_date_true, :mark_valid_due_date_false, :show, :copy_value_from_last]
   before_action :authenticate_user!
   
-  def status
-  	fancy = InvoiceFilteredHelper.fancy
-    #     to jest do bani bo musze pamietac o tych decoratorach zawsze - nie moze tak byc
-    #     pozatym to ze tym sie zmienia tez jest zupelnie do bani
-    @invoices = InvoiceDecorator.decorate_collection(fancy)
-    @operators = OperatorsHelper.get_abandoned_operators
-    render template: "layouts/status"
-  end
-  
   def index
     @list = Invoice.all.decorate
     render template: "layouts/magic_view"

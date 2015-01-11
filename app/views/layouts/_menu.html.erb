@@ -12,4 +12,16 @@
 <br/>
 <br/>
 <br/>
-<%= link_to "Status", '/invoices/status' %>
+<%= link_to "reset_now", '/set_now' %>
+<br/>
+<%= link_to "plus 2 weeks", '/now_plus_time_in_weeks/2' %>
+<br/>
+<%= link_to "minus 2 weeks", '/now_minus_time_in_weeks/2' %>
+<br/>
+<br/>
+<%= link_to "Status", '/status' %>
+<br/>
+<br/>
+<%= NowService::get_now %>
+<br/>
+<%= "actual date: #{user_session['actual_date']}" %>
