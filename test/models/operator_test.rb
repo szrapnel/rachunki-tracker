@@ -29,5 +29,15 @@ class OperatorTest < ActiveSupport::TestCase
     operator = Operator.find 8
     assert_equal 'NEVER DONE', operator.get_last_done_date
   end
-  
+
+  test "logic_valid? false" do
+    operator = Operator.find 9
+    assert_equal false, operator.logic_valid?
+  end
+
+  test "logic_valid? true" do
+    operator = Operator.find 8
+    assert_equal true, operator.logic_valid?
+  end
+
 end

@@ -4,7 +4,7 @@ class Operator < ActiveRecord::Base
   validates :name, presence: true
   
   def self.get_virtual_columns
-    return ['get_last_done_date', 'valid?']
+    return ['get_last_done_date', 'valid?', 'logic_valid?']
   end
   
   def self.default_model_actions
@@ -33,6 +33,11 @@ class Operator < ActiveRecord::Base
     #     czy last tutaj jest bezpieczne chodzi o to ze opiera sie create albo id czy cos
 #       return false if invoices.last.done_date.nil?
 #     invoices.last.done_date+days_between_invoices < NowService::get_now
+  end
+
+  def logic_valid?
+    return false if days_between_invoices.nil?
+    true
   end
   
   def get_last_done_date
