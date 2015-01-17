@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,6 +33,8 @@ gem 'draper'
 gem 'devise'
 
 gem 'rails_12factor', group: :production
+
+gem 'tzinfo-data'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -67,4 +70,4 @@ end
 
 gem 'simplecov', :require => false, :group => :test
 
-gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'codeclimate-test-reporter', group: :test, require: nil
