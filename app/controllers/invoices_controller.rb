@@ -87,7 +87,7 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_params
-      params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date, :valid_due_date, :description)
+      params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date, :valid_due_date, :description, :bank_id)
     end
   
   def execute_mark_valid_due_date(value)
