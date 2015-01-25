@@ -5,7 +5,6 @@ class BanksController < ApplicationController
   def index
     #     on heroku this not worked
     #     magic_index
-    #     on heroku this not working too
     redirect_to "/banks/magic_index"
   end
   
