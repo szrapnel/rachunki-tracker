@@ -12,7 +12,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.get_virtual_columns
-    return ['priority', 'paid_in_time?', 'valid?', 'logic_valid?']
+    return ['priority', 'paid_in_time', 'valid?', 'logic_valid?']
     #     w sumie valid moze chce zawsze miec na wszystkich z automatu
   end
   
@@ -54,7 +54,7 @@ class Invoice < ActiveRecord::Base
     return true
   end
   
-  def paid_in_time?
+  def paid_in_time
     return nil if due_date.nil?
     return nil if done_date.nil?
     return due_date > done_date
