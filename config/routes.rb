@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   
   get 'invoices/:id/mark_valid_due_date_false' => 'invoices#mark_valid_due_date_false'
   
+  get 'invoices/:id/copy_value_from_last' => 'invoices#copy_value_from_last'
+  
   get 'invoices/filtered/:filter_name' => 'invoices#filtered'
   
   get 'invoices/done' => 'invoices#done'
