@@ -31,11 +31,11 @@ Rails.application.routes.draw do
   get 'invoices' => 'invoices#index'
   post 'invoices' => 'invoices#index'
   
-  get 'invoices/mark_as_done/:id' => 'invoices#mark_as_done'
+  get 'invoices/:id/mark_as_done' => 'invoices#mark_as_done'
   
-  get 'invoices/mark_valid_due_date_true/:id' => 'invoices#mark_valid_due_date_true'
+  get 'invoices/:id/mark_valid_due_date_true' => 'invoices#mark_valid_due_date_true'
   
-  get 'invoices/mark_valid_due_date_false/:id' => 'invoices#mark_valid_due_date_false'
+  get 'invoices/:id/mark_valid_due_date_false' => 'invoices#mark_valid_due_date_false'
   
   get 'invoices/filtered/:filter_name' => 'invoices#filtered'
   
@@ -49,12 +49,12 @@ Rails.application.routes.draw do
   post 'invoices/create' => 'invoices#create'
   
   #   popraw to bo nie get
-  get 'invoices/destroy/:id' => 'invoices#destroy'
+  get 'invoices/:id/destroy' => 'invoices#destroy'
   
   get 'invoices/:id' => 'invoices#show'
   
-  get 'invoices/edit/:id' => 'invoices#edit'
-  patch 'invoices/update/:id' => 'invoices#update'
+  get 'invoices/:id/edit' => 'invoices#edit'
+  patch 'invoices/:id/update' => 'invoices#update'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
