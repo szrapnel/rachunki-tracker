@@ -100,7 +100,7 @@ class InvoicesController < ApplicationController
     end
   
     def link_to_notice
-      %Q[  changed object  <a href="/invoices/#{@invoice.id}">show</a>   <a href="/invoices/#{@invoice.id}/edit">edit</a>]
+      %Q[  changed object  <a href="/invoices/#{@invoice.id}">show</a>   <a href="/invoices/#{@invoice.id}/edit">edit</a>  <a href="/invoices/#{@invoice.id}/mark_as_done">mark_as_done</a>]
     end
 
 end
