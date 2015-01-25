@@ -34,7 +34,7 @@ module ActionsHelper
     #     TODO BUG
     controller = 'invoices' if controller=='invoiceDecorators'
     return link_to(action_name, "/#{controller}/#{object.id}") if action_name=='show'
-    link_to(action_name, "/#{controller}/#{action_name}/#{object.id}")
+    link_to(action_name, "/#{controller}/#{object.id}/#{action_name}")
   end
     
   def prepare_static_action_link(model, action)
