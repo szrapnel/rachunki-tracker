@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   
   get 'operators/abandoned' => 'operators#abandoned'
   get 'operators/magic_index' => 'operators#magic_index'
-  get 'operators/destroy/:id' => 'operators#destroy'
-  get 'operators/edit/:id' => 'operators#edit'
   resources :operators
+  
+  get 'banks/magic_index' => 'banks#magic_index'
+  resources :banks
   
 #   resources :operators do
 #     resources :invoices

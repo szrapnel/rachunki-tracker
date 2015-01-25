@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110210837) do
+ActiveRecord::Schema.define(version: 20150125185117) do
+
+  create_table "banks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "invoices", force: true do |t|
     t.decimal  "value"
@@ -24,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150110210837) do
     t.date     "done_date"
     t.boolean  "valid_due_date"
     t.text     "description"
+    t.integer  "bank_id"
   end
 
   add_index "invoices", ["operator_id"], name: "index_invoices_on_operator_id"

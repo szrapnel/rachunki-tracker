@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
   belongs_to :operator
+  belongs_to :bank
   before_save :clear_done_date_if_undone
   
 #   validates :title, presence: true
