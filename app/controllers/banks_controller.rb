@@ -5,6 +5,7 @@ class BanksController < ApplicationController
   def index
     #     on heroku this not worked
     #     magic_index
+    #     on heroku this not working too
     redirect_to '/banks/magic_index'
   end
   
@@ -20,9 +21,13 @@ class BanksController < ApplicationController
 
   def new
     @bank = Bank.new
+    @item = @bank
+    render template: "magic/new"
   end
 
   def edit
+    @item = @bank
+    render template: "magic/edit"
   end
 
   def create

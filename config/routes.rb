@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'operators/:id/destroy' => 'operators#destroy'
   resources :operators
   
+  get 'banks' => 'banks#magic_index' #heroku quickfix
   get 'banks/magic_index' => 'banks#magic_index'
   get 'banks/:id/destroy' => 'banks#destroy'
   resources :banks
