@@ -15,9 +15,13 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @item = @invoice
+    render template: "magic/new"
   end
   
   def edit
+    @item = @invoice
+    render template: "magic/edit"
   end
   
   def create
