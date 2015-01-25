@@ -3,7 +3,9 @@ class BanksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    magic_index
+    #     on heroku this not worked
+    #     magic_index
+    redirect_to '/banks/magic_index'
   end
   
   def magic_index
