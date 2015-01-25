@@ -27,7 +27,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
-      redirect_to invoices_path, notice: "Invoice created successfully."
+      redirect_to invoices_path, notice: "Invoice created successfully."+link_to_notice
     else
       render action: 'new'
     end
@@ -36,7 +36,7 @@ class InvoicesController < ApplicationController
   def update
     if @invoice.update(invoice_params)
 #       redirect_to invoices_path, notice: 'Invoice was successfully updated.'
-      redirect_after_success 'Invoice was successfully updated.'
+      redirect_after_success 'Invoice was successfully updated.'+link_to_notice
     else
       render :edit
     end
@@ -62,15 +62,15 @@ class InvoicesController < ApplicationController
     #     a moze sprawdz czy valid po prostu
     if @invoice.mark_as_done
   #     redirect_to invoices_path, notice: "Invoice marked successfully."
-      redirect_after_success 'Invoice was successfully marked.'
+      redirect_after_success 'Invoice was successfully marked.'+link_to_notice
     else
       redirect_after_failure 'Incorrect data to mark.'
     end
   end
-  
+   
   def copy_value_from_last
     if @invoice.copy_value_from_last
-      redirect_to :back, notice: 'Value copied successfuly.'
+      redirect_to :back, notice: 'Value copied successfuly.'+link_to_notice
     else
       redirect_to :back, alert: 'Invalid data.'
     end
@@ -94,9 +94,13 @@ class InvoicesController < ApplicationController
       params.require(:invoice).permit(:title, :value, :operator_id, :done, :done_date, :due_date, :valid_due_date, :description, :bank_id)
     end
   
-  def execute_mark_valid_due_date(value)
+    def execute_mark_valid_due_date(value)
       @invoice.mark_valid_due_date(value)
-      redirect_to :back, notice: 'Invoice was successfully marked.'
+      redirect_to :back, notice: 'Invoice was successfully marked.'+link_to_notice
+    end
+  
+    def link_to_notice
+      %Q[  changed object  <a href="/invoices/#{@invoice.id}">show</a>   <a href="/invoices/#{@invoice.id}/edit">edit</a>]
     end
 
 end

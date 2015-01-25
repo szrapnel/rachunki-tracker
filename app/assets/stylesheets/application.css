@@ -19,3 +19,12 @@ tr:nth-child(even) { background: #CCC }
 tr:hover { background-color: #AAC; }
 
 table { background: #EEE }
+
+.notice { 
+  background: #66FF66;
+}
+
+.alert { 
+  background: red;
+  color: white;
+}
