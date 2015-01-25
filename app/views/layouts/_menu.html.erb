@@ -1,6 +1,6 @@
 <hr/>
 <br/>
-<% if controller_name=='operators' || controller_name=='invoices' %>
+<% if controller_name=='operators' || controller_name=='invoices' || controller_name=='banks'%>
   <%= render "#{controller_name}/sub_menu" %>
 <% end %>
 
@@ -10,6 +10,8 @@
 <%= link_to "MyOperators", '/operators/magic_index' %>
 <br/>
 <%= link_to "Invoices", '/invoices' %>
+<br/>
+<%= link_to "Banks", '/banks' %>
 <br/>
 <br/>
 <br/>
