@@ -20,14 +20,14 @@ class OperatorTest < ActiveSupport::TestCase
     assert_equal true, operator.check_if_abandoned?
   end
   
-  test "get_last_done_date valid date" do
+  test "get_last_payment_date valid date" do
     operator = Operator.find 1
-    assert_equal 'Thu, 05 Jan 2012'.to_date, operator.get_last_done_date
+    assert_equal 'Thu, 05 Jan 2012'.to_date, operator.get_last_payment_date
   end
   
-  test "get_last_done_date valid NEVER DONE" do
+  test "get_last_payment_date valid NEVER DONE" do
     operator = Operator.find 8
-    assert_equal 'NEVER DONE', operator.get_last_done_date
+    assert_equal 'NEVER DONE', operator.get_last_payment_date
   end
 
   test "logic_valid? false" do

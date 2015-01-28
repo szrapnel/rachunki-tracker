@@ -43,7 +43,7 @@ class Operator < ActiveRecord::Base
   def get_last_payment_date
     paid_invoices = invoices.where.not({payment_date:nil})
     return 'NEVER DONE' if paid_invoices.empty?
-    last_payment_date = done_invoices.order("payment_date DESC").first.payment_date
+    last_payment_date = paid_invoices.order("payment_date DESC").first.payment_date
 #     return 'NEVER DONE' if last_done_date.nil?
     return last_payment_date
   end

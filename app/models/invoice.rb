@@ -3,18 +3,6 @@ class Invoice < ActiveRecord::Base
   belongs_to :bank
   before_save :clear_payment_date_if_not_paid
 
-  def self.default_instance_actions
-    ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
-  end
-
-  def self.get_virtual_columns
-    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?']
-  end
-
-  def self.default_model_actions
-    [ 'filtered/paid', 'filtered/not_paid', 'filtered/latest', 'filtered/overdue', 'filtered/last_2_weeks', 'new']
-  end
-
   def mark_as_paid_and_create_next
     return false unless ready_to_mark_as_paid?
     NextInvoiceLogic::create_next(self)
@@ -23,14 +11,12 @@ class Invoice < ActiveRecord::Base
 
   def ready_to_mark_as_paid?
     return false if paid
-    return false unless valid?
     return false unless logic_valid?
     true
   end
 
   def logic_valid?
-    return false if value.nil?
-    return false if title.nil?
+    return false if value.nil? || title.nil?
     true
   end
 
