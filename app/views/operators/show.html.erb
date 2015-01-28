@@ -2,9 +2,9 @@
 <%= render "layouts/magic_show" %>
 
 <h2>done</h2>
-<%= magic_table(@operator.invoices_done_decorated)%>
+<%= magic_table(@operator.invoices_paid_decorated)%>
 <h2>not done</h2>
-<%= magic_table(@operator.invoices_not_done_decorated)%>
+<%= magic_table(@operator.invoices_not_paid_decorated)%>
 ------------------------------------------------------------
 <h2>all</h2>
 <%= magic_table(@operator.invoices_decorated)%>

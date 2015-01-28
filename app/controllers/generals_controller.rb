@@ -27,11 +27,11 @@ class GeneralsController < ApplicationController
   end
 
   def now_plus_time_in_weeks(delta=params[:number_of_weeks])
-    set_now(NowService::get_now+delta.to_i.weeks)
+    set_now(TimeService::get_now+delta.to_i.weeks)
   end
 
   def now_minus_time_in_weeks(delta=params[:number_of_weeks])
-    set_now(NowService::get_now-delta.to_i.weeks)
+    set_now(TimeService::get_now-delta.to_i.weeks)
   end
 
 end

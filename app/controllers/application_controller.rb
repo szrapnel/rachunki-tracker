@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
   def set_user_session_for_now_service
     if user_signed_in?
-      NowService::set_session(user_session)
+      TimeService::set_session(user_session)
     end
   end
   

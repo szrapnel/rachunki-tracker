@@ -2,79 +2,79 @@ require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
 
-  test "mark as done success" do
+  test "mark as paid success" do
     invoice = Invoice.find(1)
-    invoice.mark_as_done
+    invoice.mark_as_paid_and_create_next
     
     org = Invoice.find(1)
-    assert org.done
+    assert org.paid
     
     last = Invoice.last
     #     co z due date
     assert_equal TitleGenerator::get_next_title(org.title), last.title
-    assert_equal false, last.done
+    assert_equal false, last.paid
     assert_equal org.operator, last.operator
   end
   
-  test "mark as done failure" do
+  test "mark as paid failure" do
     invoice = Invoice.find(2)
     last_invoice = Invoice.last
     
-    assert_equal false, invoice.mark_as_done
+    assert_equal false, invoice.mark_as_paid_and_create_next
     assert_equal last_invoice, Invoice.last
   end
   
   test "mark_valid_due_date with true" do
     invoice = Invoice.find(1)
-    invoice.mark_valid_due_date true
+    invoice.mark_due_date_as_valid true
     invoice = Invoice.find(1)
     assert_equal invoice.valid_due_date, true
   end
 
   test "mark_valid_due_date with false" do
     invoice = Invoice.find(1)
-    invoice.mark_valid_due_date false
+    invoice.mark_due_date_as_valid false
     invoice = Invoice.find(1)
     assert_equal invoice.valid_due_date, false
   end
   
-  test "clear done_date if not done" do
+  test "clear payment_date if not paid" do
     invoice = Invoice.find 4
-    invoice.done=false
+    invoice.paid=false
     invoice.save
     
     invoice = Invoice.find 4
-    assert_equal invoice.done_date, nil
+    assert_equal invoice.payment_date, nil
   end
   #----------------------------------------------------
   test "copy_value_from_last success" do
     invoice = Invoice.find 6
-    result = invoice.copy_value_from_last
+    result = invoice.copy_previous_value
     assert_equal true, result
   end
   
   test "copy_value_from_last failure already has value" do
     invoice = Invoice.find 8
-    result = invoice.copy_value_from_last
+    result = invoice.copy_previous_value
     assert_equal false, result
   end
   
   test "copy_value_from_last failure operator nil" do
     invoice = Invoice.find 9
-    result = invoice.copy_value_from_last
+    result = invoice.copy_previous_value
     assert_equal false, result
   end
   
   test "copy_value_from_last failure last nil" do
     invoice = Invoice.find 10
-    result = invoice.copy_value_from_last
+    result = invoice.copy_previous_value
     assert_equal false, result
   end
   
   test "copy_value_from_last failure last value nil too" do
     invoice = Invoice.find 12
-    result = invoice.copy_value_from_last
-    assert_equal false, result
+    result = invoice.copy_previous_value
+    assert_equal true, result
   end
   
 end

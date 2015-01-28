@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'invoices' => 'invoices#index'
   post 'invoices' => 'invoices#index'
   
-  get 'invoices/:id/mark_as_done' => 'invoices#mark_as_done'
+  get 'invoices/:id/mark_as_paid_and_create_next' => 'invoices#mark_as_paid_and_create_next'
   
   get 'invoices/:id/mark_valid_due_date_true' => 'invoices#mark_valid_due_date_true'
   

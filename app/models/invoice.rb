@@ -1,83 +1,84 @@
 class Invoice < ActiveRecord::Base
   belongs_to :operator
   belongs_to :bank
-  before_save :clear_done_date_if_undone
-  
-#   validates :title, presence: true
-  
-  #   moja kolumna valid for logic pozwala dodac kulawy ale nie pozwala go przetwarzac przed poprawieniem
-  
+  before_save :clear_payment_date_if_not_paid
+
   def self.default_instance_actions
-    return ['mark_as_done', 'show', 'edit', 'destroy', 'mark_valid_due_date_true', 'mark_valid_due_date_false', 'copy_value_from_last']
+    ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
   end
-  
+
   def self.get_virtual_columns
-    return ['priority', 'paid_in_time', 'valid?', 'logic_valid?']
-    #     w sumie valid moze chce zawsze miec na wszystkich z automatu
+    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?']
   end
-  
+
   def self.default_model_actions
-    return [ 'filtered/done', 'filtered/not_done', 'filtered/latest', 'filtered/overdue', 'filtered/fancy', 'new']
+    [ 'filtered/paid', 'filtered/not_paid', 'filtered/latest', 'filtered/overdue', 'filtered/last_2_weeks', 'new']
   end
-  
-  def mark_as_done
-    return false if self.done
-    return false unless self.valid?
-    return false if self.value.nil?
-    return false if self.title.nil?
+
+  def mark_as_paid_and_create_next
+    return false unless ready_to_mark_as_paid?
     NextInvoiceLogic::create_next(self)
-    execute_as_done
+    mark_as_paid
   end
-  
-  def copy_value_from_last
-    return false unless is_value_from_last_accesible?
-    return false unless value.nil?
-    last_value = get_last_invoice_before_me_value
-    self.value = last_value
-    self.save
-    return true
+
+  def ready_to_mark_as_paid?
+    return false if paid
+    return false unless valid?
+    return false unless logic_valid?
+    true
   end
-    
-  def get_last_invoice_before_me_value
-    return operator.invoices.where.not( {id:id} ).last.value
-  end
-  
-  def mark_valid_due_date(value)
-    self.valid_due_date = value
-    self.save
-  end
-  
+
   def logic_valid?
-    return false if done && done_date.nil?
     return false if value.nil?
     return false if title.nil?
-    return true
+    true
+  end
+
+  def mark_due_date_as_valid(value)
+    self.valid_due_date = value
+    save
   end
   
+  def copy_previous_value
+    return false unless previous_invoice_accessible?
+    return false unless value.nil?
+    self.value = get_previous_invoice_value
+    save
+  end
+
   def paid_in_time
-    return nil if due_date.nil?
-    return nil if done_date.nil?
-    return due_date > done_date
+    dates_set?
+    due_date > payment_date
   end
 
   private
     
-    def execute_as_done
-      self.done = true
-      self.done_date = NowService::get_now
-      self.save
+    def mark_as_paid
+      self.paid = true
+      self.payment_date = TimeService::get_now
+      save
     end
 
-    def clear_done_date_if_undone
-      self.done_date = nil unless self.done
+    def dates_set?
+      due_date.nil? || payment_date.nil?
     end
-  
-    def is_value_from_last_accesible?
+
+    def clear_payment_date_if_not_paid
+      self.payment_date = nil unless paid
+    end
+
+    def get_previous_invoice_value
+      get_previous_invoice.value if previous_invoice_accessible?
+    end
+
+    def get_previous_invoice
+      operator.invoices.where.not( {id:id} ).last
+    end
+
+    def previous_invoice_accessible?
       return false if operator.nil?
       return false if operator.invoices.count < 2
-      last_invoice_value = get_last_invoice_before_me_value
-      return false if last_invoice_value.nil?
-      return true
+      true
     end
-    
+
 end

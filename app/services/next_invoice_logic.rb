@@ -5,7 +5,7 @@ class NextInvoiceLogic
     new_invoice.operator = invoice.operator
     new_invoice.due_date = calculate_new_due_date(invoice)
     new_invoice.title = TitleGenerator::get_next_title(invoice.title)
-    new_invoice.done = false
+    new_invoice.paid = false
     new_invoice.save
   end
   

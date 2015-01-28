@@ -3,16 +3,16 @@ require 'test_helper'
 class InvoiceFilteredHelperTest < ActiveSupport::TestCase
 
   test "done" do
-    list = InvoiceFilteredHelper.done
+    list = InvoiceFilteredHelper.paid
     list.each do |item|
-      assert item.done
+      assert item.paid
     end
   end
   
   test "not_done" do
-    list = InvoiceFilteredHelper.not_done
+    list = InvoiceFilteredHelper.not_paid
     list.each do |item|
-      assert item.done==false
+      assert item.paid==false
     end
   end
   

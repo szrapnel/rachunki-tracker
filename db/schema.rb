@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125185117) do
+ActiveRecord::Schema.define(version: 20150128140301) do
 
   create_table "banks", force: true do |t|
     t.string   "name"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20150125185117) do
     t.integer  "operator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "done",           default: false
+    t.boolean  "paid",           default: false
     t.string   "title"
     t.date     "due_date"
-    t.date     "done_date"
+    t.date     "payment_date"
     t.boolean  "valid_due_date"
     t.text     "description"
     t.integer  "bank_id"

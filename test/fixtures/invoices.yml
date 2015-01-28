@@ -1,41 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 
-#mark as done success
+#mark as paid success
 #mark_valid_due_date with true
 #mark_valid_due_date with false
 one:
   id: 1
   value: 5.55
   operator_id: 1
-  done: false
-  done_date: 'Thu, 05 Jan 2012'
+  paid: false
+  payment_date: 'Thu, 05 Jan 2012'
   title: "I"
 
-#mark as done failure
+#mark as paid failure
 two:
   id: 2
   value: 9.99
   operator_id: 1
-  done: true
-  done_date: 'Thu, 05 Jan 2012'
+  paid: true
+  payment_date: 'Thu, 05 Jan 2012'
   title: "X"
   
 three:
   id: 3
   value: 7.77
   operator_id: 2
-  done: true
-  done_date: '05-01-2016'
+  paid: true
+  payment_date: '05-01-2016'
   title: "ZZ"
   
-#clear done_date if not done
+#clear payment_date if not paid
 four:
   id: 4
   value: 7.77
   operator_id: 3
-  done: true
-  done_date: '05-01-2015'
+  paid: true
+  payment_date: '05-01-2015'
   title: "ZZ"
   
 #use as last for 6
