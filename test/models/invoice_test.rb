@@ -77,4 +77,10 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal true, result
   end
   
+  test 'dates_set?' do
+    i = Invoice.new
+    result = i.send(:dates_set?)
+    assert_equal false, result
+  end
+  
 end

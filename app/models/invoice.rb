@@ -46,7 +46,7 @@ class Invoice < ActiveRecord::Base
     end
 
     def dates_set?
-      due_date.nil? || payment_date.nil?
+      due_date.nil? || payment_date.nil? ? false : true
     end
 
     def clear_payment_date_if_not_paid
