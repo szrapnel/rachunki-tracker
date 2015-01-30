@@ -36,6 +36,14 @@ class Invoice < ActiveRecord::Base
     dates_set?
     due_date > payment_date
   end
+  
+  def mut(arg)
+    if arg==1
+      true
+    else
+      false
+    end
+  end
 
   private
     

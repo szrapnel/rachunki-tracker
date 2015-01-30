@@ -83,4 +83,12 @@ class InvoiceTest < ActiveSupport::TestCase
     assert_equal false, result
   end
   
+  test 'invoice 1' do
+    assert_equal true, Invoice.new.mut(1)
+  end
+  
+  test 'invoice 2' do
+    assert_equal false, Invoice.new.mut(2)
+  end
+  
 end
