@@ -8,7 +8,9 @@ class Invoice < ActiveRecord::Base
   # byla jeszcze uwaga ze od odczytania to potem zrobienia czegos odczytana wartosc sie moze zmienic np w mark_as_paid_and_create_next, ale moim zdaniem w copy_previus_value jest podobnie
 
   def mark_as_paid_and_create_next
-    return false unless ready_to_mark_as_paid?
+    unless ready_to_mark_as_paid?
+      return false
+    end
     # TODO when mark_as_paid fails next is already created
     NextInvoiceLogic::create_next(self)
     mark_as_paid
@@ -42,14 +44,6 @@ class Invoice < ActiveRecord::Base
     false
   end
   
-  def mut(arg)
-    if arg==1
-      true
-    else
-      false
-    end
-  end
-
   private
     
     def mark_as_paid
