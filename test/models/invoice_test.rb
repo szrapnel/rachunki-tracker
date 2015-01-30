@@ -81,14 +81,33 @@ class InvoiceTest < ActiveSupport::TestCase
     i = Invoice.new
     result = i.send(:dates_set?)
     assert_equal false, result
+
+    i = Invoice.new
+    i.payment_date = '01-01-2015'
+    result = i.send(:dates_set?)
+    assert_equal false, result
+
+    i = Invoice.new
+    i.due_date = '01-01-2015'
+    result = i.send(:dates_set?)
+    assert_equal false, result
+
+    i = Invoice.new
+    i.payment_date = '01-01-2015'
+    i.due_date = '01-01-2015'
+    result = i.send(:dates_set?)
+    assert_equal true, result
   end
-  
-  test 'invoice 1' do
-    assert_equal true, Invoice.new.mut(1)
+
+  test 'paid_in_time?' do
+    i=Invoice.new
+    result = i.paid_in_time
+    assert_equal false, result
+
+    i.payment_date = '01-01-2015'
+    i.due_date = '05-01-2015'
+    result = i.paid_in_time
+    assert_equal true, result
   end
-  
-  test 'invoice 2' do
-    assert_equal false, Invoice.new.mut(2)
-  end
-  
+
 end
