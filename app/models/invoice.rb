@@ -3,6 +3,18 @@ class Invoice < ActiveRecord::Base
   belongs_to :bank
   before_save :clear_payment_date_if_not_paid
 
+  def self.default_instance_actions
+    ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
+  end
+
+  def self.get_virtual_columns
+    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?']
+  end
+
+  def self.default_model_actions
+    [ 'filtered/paid', 'filtered/not_paid', 'filtered/latest', 'filtered/overdue', 'filtered/last_2_weeks', 'new']
+  end
+
   # think about what should be executed in transactions
 
   # byla jeszcze uwaga ze od odczytania to potem zrobienia czegos odczytana wartosc sie moze zmienic np w mark_as_paid_and_create_next, ale moim zdaniem w copy_previus_value jest podobnie
