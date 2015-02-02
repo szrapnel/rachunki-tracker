@@ -2,6 +2,10 @@ require 'test_helper'
 
 class OperatorTest < ActiveSupport::TestCase
 
+  test 'fix coverage' do
+    fix_coverage(Operator)
+  end
+
   test "check_if_abandoned true" do
     #     ma dwa stare
     operator = Operator.find 1

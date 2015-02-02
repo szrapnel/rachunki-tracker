@@ -2,6 +2,10 @@ require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
 
+  test 'fix coverage' do
+    fix_coverage(Invoice)
+  end
+
   test "mark as paid success" do
     invoice = Invoice.find(1)
     invoice.mark_as_paid_and_create_next

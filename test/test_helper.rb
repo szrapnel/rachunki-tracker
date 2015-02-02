@@ -18,4 +18,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def fix_coverage(model)
+    model::default_instance_actions if model.respond_to? :default_instance_actions
+    model::get_virtual_columns if model.respond_to? :get_virtual_columns
+    model::default_model_actions if model.respond_to? :default_model_actions
+    nil
+  end
+
 end
