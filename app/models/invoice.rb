@@ -21,7 +21,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def logic_valid?
-    not (value.nil? || title.nil?)
+    value.present? && title.present?
   end
 
   def mark_due_date_as_valid(value)
@@ -53,7 +53,7 @@ class Invoice < ActiveRecord::Base
     end
 
     def dates_set?
-      due_date.nil? || payment_date.nil? ? false : true
+      due_date.present? && payment_date.present?
     end
 
     def clear_payment_date_if_not_paid
