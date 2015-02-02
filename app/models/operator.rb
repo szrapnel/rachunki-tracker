@@ -11,14 +11,17 @@ class Operator < ActiveRecord::Base
     return ['new', 'abandoned']
   end
   
+  #   TODO not in model move
   def invoices_decorated
     return InvoiceDecorator.decorate_collection(invoices)
   end
   
+  #   TODO not in model move
   def invoices_paid_decorated
     return InvoiceDecorator.decorate_collection(invoices.where({paid:true}))
   end
   
+  #   TODO not in model move
   def invoices_not_paid_decorated
     return InvoiceDecorator.decorate_collection(invoices.where({paid:false}))
   end
@@ -36,8 +39,7 @@ class Operator < ActiveRecord::Base
   end
 
   def logic_valid?
-    return false if days_between_invoices.nil?
-    true
+    days_between_invoices.present?
   end
   
   def get_last_payment_date
