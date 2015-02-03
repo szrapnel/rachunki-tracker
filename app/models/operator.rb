@@ -13,6 +13,7 @@ class Operator < ActiveRecord::Base
 
   #   TODO rename
   def check_if_abandoned?
+    return false if closed
     return true if days_between_invoices.nil?
     last_payment_date = get_last_payment_date
     return true if last_payment_date == 'NEVER DONE'
