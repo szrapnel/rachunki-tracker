@@ -9,7 +9,7 @@ class OperatorsController < ApplicationController
   end
   
   def magic_index
-    @list = Operator.all
+    @list = Operator.all.decorate
     render template: "layouts/magic_view"
   end
 

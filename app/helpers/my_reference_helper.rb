@@ -7,7 +7,18 @@ module MyReferenceHelper
 #       return object.instance_eval(field_name)
 #       raise object.inspect
 #       return object[field_name]
-      get_field_or_virtual_field_value(object, field_name)
+      a=get_field_or_virtual_field_value(object, field_name)
+      
+#       return a.count if a.respond_to :count
+      return a
+        
+      #       TODO moze array a moze cos jeszcze innego
+#       if a.kind_of? ActiveRecord::AssociationRelation
+      if a.respond_to? :count
+        return a.count
+      else
+        return a
+      end
     end
   end
 
