@@ -61,11 +61,20 @@ class OperatorsController < ApplicationController
   # DELETE /operators/1
   # DELETE /operators/1.json
   def destroy
-    @operator.destroy
     respond_to do |format|
-      format.html { redirect_to operators_url, notice: 'Operator was successfully destroyed.' }
-      format.json { head :no_content }
+      if can_destroy?
+        @operator.destroy
+        format.html { redirect_to operators_url, notice: 'Operator was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to operators_url, alert: 'Operator has invoices, destroy them first.' }
+        format.json { head :no_content }
+      end
     end
+  end
+  
+  def can_destroy?
+    @operator.invoice_number==0
   end
   
   def abandoned

@@ -4,7 +4,7 @@ class Operator < ActiveRecord::Base
   validates :name, presence: true
   
   def self.get_virtual_columns
-    return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?']
+    return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?', 'invoice_number']
   end
   
   def self.default_model_actions
@@ -34,6 +34,10 @@ class Operator < ActiveRecord::Base
     return 'NEVER DONE' if paid_invoices.empty?
     paid_invoices.order('payment_date DESC').first.payment_date
 #     return 'NEVER DONE' if last_done_date.nil?
+  end
+  
+  def invoice_number
+    invoices.count
   end
   
 end
