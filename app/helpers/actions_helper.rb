@@ -31,16 +31,19 @@ module ActionsHelper
   #   move
   def prepare_action_link(object, action_name)
     controller = "#{object.class.to_s.camelize(:lower)}s"
-    #     TODO BUG
-    controller = 'invoices' if controller=='invoiceDecorators'
+    controller = ignoreDecoratorStringInControllerName(controller)
     return link_to(action_name, "/#{controller}/#{object.id}") if action_name=='show'
     link_to(action_name, "/#{controller}/#{object.id}/#{action_name}")
   end
     
+  def ignoreDecoratorStringInControllerName(controller)
+    controller.slice! 'Decorator'
+    controller
+  end
+    
   def prepare_static_action_link(model, action)
     controller = "#{model.to_s.camelize(:lower)}s"
-#     TODO BUG
-    cotroller = 'invoices' if controller=='invoiceDecorators'
+    controller = ignoreDecoratorStringInControllerName(controller)
     link_to action, "/#{controller}/#{action}"
   end
 
