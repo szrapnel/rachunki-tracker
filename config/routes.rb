@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   devise_for :users
   #   root 'invoices#index'
-  root 'invoices#filtered', filter_name: 'fancy'
+  
+#   root 'invoices#filtered', filter_name: 'fancy'
+  root 'generals#landing_page'
 
   get 'status' => 'generals#status'
   get 'set_now' => 'generals#set_now'

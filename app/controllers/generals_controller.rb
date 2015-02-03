@@ -33,5 +33,13 @@ class GeneralsController < ApplicationController
   def now_minus_time_in_weeks(delta=params[:number_of_weeks])
     set_now(TimeService::get_now-delta.to_i.weeks)
   end
+    
+  def landing_page
+    if user_signed_in?
+      redirect_to '/status'
+    else
+      redirect_to '/users/sign_in'
+    end
+  end
 
 end
