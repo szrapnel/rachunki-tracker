@@ -16,6 +16,7 @@ class OperatorsController < ApplicationController
   # GET /operators/1
   # GET /operators/1.json
   def show
+    @operator=@operator.decorate
   end
 
   # GET /operators/new
