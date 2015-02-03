@@ -13,3 +13,7 @@ jak codeship robi tego checka heroku
 
 
 generyczny kontroller - podajesz nazwe modelu i tyle w zadzie powinno byc potrzebne
+
+
+
+SHOW NA HEROKU NIE DZIALA
