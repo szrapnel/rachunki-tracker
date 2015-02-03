@@ -17,3 +17,6 @@ generyczny kontroller - podajesz nazwe modelu i tyle w zadzie powinno byc potrze
 
 
 SHOW NA HEROKU NIE DZIALA
+
+
+moze dekoruj na widoku dopiero
