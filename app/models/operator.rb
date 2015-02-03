@@ -4,13 +4,14 @@ class Operator < ActiveRecord::Base
   validates :name, presence: true
   
   def self.get_virtual_columns
-    return ['get_last_payment_date', 'valid?', 'logic_valid?']
+    return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?']
   end
   
   def self.default_model_actions
     return ['new', 'abandoned']
   end
 
+  #   TODO rename
   def check_if_abandoned?
     return true if days_between_invoices.nil?
     last_payment_date = get_last_payment_date
