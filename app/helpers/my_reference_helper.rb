@@ -8,13 +8,8 @@ module MyReferenceHelper
 #       raise object.inspect
 #       return object[field_name]
       a=get_field_or_virtual_field_value(object, field_name)
-      
-#       return a.count if a.respond_to :count
-      return a
-        
-      #       TODO moze array a moze cos jeszcze innego
-#       if a.kind_of? ActiveRecord::AssociationRelation
-      if a.respond_to? :count
+      #       TODO to jest jedno podejscie ale jest jeszcze drugie aby w virtual do nazwy metody dodac count i samemu to w locie zliczyc
+      if a.kind_of? Array
         return a.count
       else
         return a
