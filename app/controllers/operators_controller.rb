@@ -81,6 +81,16 @@ class OperatorsController < ApplicationController
     @list = OperatorsHelper.get_abandoned_operators
     render template: "layouts/magic_view"
   end
+  
+  def open
+    @list = Operator.where(closed:false)
+    render template: "layouts/magic_view"
+  end
+  
+  def closed
+    @list = Operator.where(closed:true)
+    render template: "layouts/magic_view"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

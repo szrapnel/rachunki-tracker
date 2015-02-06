@@ -8,7 +8,7 @@ class Operator < ActiveRecord::Base
   end
   
   def self.default_model_actions
-    return ['new', 'abandoned']
+    return ['new', 'abandoned', 'open', 'closed']
   end
 
   #   TODO rename

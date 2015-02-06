@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'invoices/copy_value_from_last/:id' => 'invoices#copy_value_from_last'
   
   get 'operators/abandoned' => 'operators#abandoned'
+  get 'operators/open' => 'operators#open'
+  get 'operators/closed' => 'operators#closed'
   get 'operators/magic_index' => 'operators#magic_index'
   get 'operators/:id/destroy' => 'operators#destroy'
   resources :operators
