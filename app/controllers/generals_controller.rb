@@ -7,6 +7,7 @@ class GeneralsController < ApplicationController
     #     pozatym to ze tym sie zmienia tez jest zupelnie do bani
     @invoices = InvoiceDecorator.decorate_collection(fancy)
     @operators = OperatorsHelper.get_abandoned_operators
+    @operators = OperatorDecorator.decorate_collection(@operators)
     render template: "layouts/status"
   end
   
