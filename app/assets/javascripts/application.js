@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  colorTds();
+});
+
+function colorTds() {
+  $('td').each(function( index, value ) {
+    colorTd(value);
+  });
+}
+
+function colorTd(td) {
+  var v = td.innerText
+  if(v=='false')
+    $(td).css('background-color', 'red');  
+  if(v=='true')
+    $(td).css('background-color', 'green');  
+}
