@@ -15,10 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-  colorTds();
-});
-
 function colorTds() {
   $('td').each(function( index, value ) {
     colorTd(value);
@@ -28,7 +24,18 @@ function colorTds() {
 function colorTd(td) {
   var v = td.innerText
   if(v=='false')
-    $(td).css('background-color', 'red');  
+    $(td).css('background-color', 'orangered');  
   if(v=='true')
-    $(td).css('background-color', 'green');  
+    $(td).css('background-color', 'limegreen');
+  
+  if(v=='COOL')
+    $(td).css('background-color', 'aqua');
+  if(v=='CRITICAL')
+    $(td).css('background-color', 'orange');
+  if(v=='OVERDUE')
+    $(td).css('background-color', 'orangered');
+  if(v=='DONE')
+    $(td).css('background-color', 'limegreen');
+  if(v=='NEVER DONE')
+    $(td).css('background-color', 'orangered');
 }
