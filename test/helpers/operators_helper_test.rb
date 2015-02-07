@@ -4,9 +4,7 @@ class OperatorsHelperTest < ActiveSupport::TestCase
 
   test "get_abandoned_operators" do
     list = OperatorsHelper.get_abandoned_operators
-    assert_equal 7, list.count
-    assert_equal Operator.find(1), list.first
-    assert_equal Operator.find(4), list.second
+    assert_equal 8, list.count
   end
   
 end
