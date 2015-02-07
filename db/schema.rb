@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207100148) do
+ActiveRecord::Schema.define(version: 20150207222201) do
 
   create_table "banks", force: true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150207100148) do
     t.datetime "updated_at"
     t.integer  "days_between_invoices"
     t.boolean  "closed",                default: false
+    t.text     "description"
   end
 
   create_table "tasks", force: true do |t|
