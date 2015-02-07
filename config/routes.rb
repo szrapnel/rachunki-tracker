@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'banks/:id/destroy' => 'banks#destroy'
   resources :banks
   
+  resources :tasks
+  get 'tasks/:id/destroy' => 'tasks#destroy'
+  
 #   resources :operators do
 #     resources :invoices
 #   end
