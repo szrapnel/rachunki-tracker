@@ -26,8 +26,8 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = @default_model.new(item_params)
-    if @task.save
+    @item = @default_model.new(item_params)
+    if @item.save
       redirect_to @default_redirect_path, notice: "#{@default_model} created successfully."
     else
       render action: 'new'
