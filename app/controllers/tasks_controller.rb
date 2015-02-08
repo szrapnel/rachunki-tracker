@@ -2,7 +2,7 @@ class TasksController < MyMagicController
    
   def initialize
     @default_model = Task
-    @default_redirect_path = '/tasks'
+    @default_redirect_path = '/'
   end
   
   private
