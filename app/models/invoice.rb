@@ -4,7 +4,8 @@ class Invoice < ActiveRecord::Base
   before_save :clear_payment_date_if_not_paid
   
 #   default_scope :order => 'due_date DESC, title'
-  default_scope :order => 'due_date DESC'
+#   default_scope :order => 'due_date DESC'
+  default_scope { order('due_date DESC') } 
 
   def self.default_instance_actions
     ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
