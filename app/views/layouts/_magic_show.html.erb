@@ -1,7 +1,13 @@
 <br/>
 <h3>Show</h3>
 <br/>
-<% @item = @item.decorate %>
+<% #@item = @item.decorate %>
+<%
+begin
+  @item=@item.decorate
+rescue
+end
+%>
 <% if @item.nil? %>
   <%= 'needed item variable' %>
 <% else %>

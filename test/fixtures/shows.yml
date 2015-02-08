@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ended: false
+  description: MyText
+  seasons_number: 1
+
+two:
+  title: MyString
+  ended: false
+  description: MyText
+  seasons_number: 1

@@ -27,6 +27,13 @@ Rails.application.routes.draw do
   get 'banks/:id/destroy' => 'banks#destroy'
   resources :banks
   
+  resources :shows
+  get 'shows/:id/destroy' => 'shows#destroy'
+  resources :seasons
+  get 'seasons/:id/destroy' => 'seasons#destroy'
+  resources :episodes
+  get 'episodes/:id/destroy' => 'episodes#destroy'
+  
   resources :tasks
   get 'tasks/:id/destroy' => 'tasks#destroy'
   

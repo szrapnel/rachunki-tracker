@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208143640) do
+ActiveRecord::Schema.define(version: 20150208215327) do
 
   create_table "banks", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "episodes", force: true do |t|
+    t.integer  "number"
+    t.string   "title"
+    t.boolean  "seen",        default: false
+    t.boolean  "aired",       default: false
+    t.text     "description"
+    t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +54,25 @@ ActiveRecord::Schema.define(version: 20150208143640) do
     t.boolean  "closed",                default: false
     t.text     "description"
     t.boolean  "auto_payment",          default: false
+  end
+
+  create_table "seasons", force: true do |t|
+    t.integer  "number"
+    t.boolean  "ended"
+    t.text     "description"
+    t.integer  "episodes_number"
+    t.integer  "show_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shows", force: true do |t|
+    t.string   "title"
+    t.boolean  "ended"
+    t.text     "description"
+    t.integer  "seasons_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tasks", force: true do |t|
