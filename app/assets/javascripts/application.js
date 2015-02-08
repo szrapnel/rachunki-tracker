@@ -38,4 +38,6 @@ function colorTd(td) {
     $(td).css('background-color', 'limegreen');
   if(v=='NEVER DONE')
     $(td).css('background-color', 'orangered');
+  if(v=='UNKNOWN')
+    $(td).css('background-color', 'pink');
 }

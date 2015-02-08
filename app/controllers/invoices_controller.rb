@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @list = Invoice.all.decorate
+    @list = Invoice.all.order(:id).decorate
     render template: 'layouts/magic_view'
   end
   

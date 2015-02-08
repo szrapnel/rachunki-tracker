@@ -2,13 +2,16 @@ class Invoice < ActiveRecord::Base
   belongs_to :operator
   belongs_to :bank
   before_save :clear_payment_date_if_not_paid
+  
+#   default_scope :order => 'due_date DESC, title'
+  default_scope :order => 'due_date DESC'
 
   def self.default_instance_actions
     ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
   end
 
   def self.get_virtual_columns
-    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?']
+    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?', 'paid_data_ok']
   end
 
   def self.default_model_actions
@@ -33,7 +36,17 @@ class Invoice < ActiveRecord::Base
   end
 
   def logic_valid?
-    value.present? && title.present?
+    value.present? && title.present? && operator.present?
+  end
+  
+  def paid_data_ok
+    return nil if not paid
+#     bank.present? && operator.present? && due_date.present? && valid_due_date.present? && payment_date.present?
+#     [bank, operator, due_date, valid_due_date, payment_date].each do |field|
+#       return false if field.nil?
+#     end
+    [bank, operator, due_date, valid_due_date, payment_date].each {|field| return false if field.nil? }
+    true
   end
 
   def mark_due_date_as_valid(value)
