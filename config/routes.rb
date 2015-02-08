@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'generals#landing_page'
 
   get 'status' => 'generals#status'
+  get 'status_better' => 'generals#status_better'
   get 'set_now' => 'generals#set_now'
   get 'set_now/:actual_date' => 'generals#set_now'
   get 'now_plus_time_in_weeks/:number_of_weeks' => 'generals#now_plus_time_in_weeks'
