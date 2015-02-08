@@ -41,7 +41,7 @@ module ViewHelper
 
   def get_field_or_virtual_field_value(object, field_name)
     a = get_field_or_virtual_field_value_normal(object, field_name)
-    if a.kind_of? Array
+    if a.kind_of?(Array) || a.kind_of?(ActiveRecord::Associations::CollectionProxy)
         return a.count
     else
         return a
