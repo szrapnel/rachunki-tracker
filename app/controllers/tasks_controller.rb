@@ -1,11 +1,12 @@
 class TasksController < MyMagicController
    
-  def initialize
-    @default_model = Task
-    @default_redirect_path = '/'
-  end
-  
+ 
   private
+  
+    def configure
+      @default_model = Task
+      @default_redirect_path = '/'
+    end
   
     def item_params
       params.require(:task).permit(:title, :description)

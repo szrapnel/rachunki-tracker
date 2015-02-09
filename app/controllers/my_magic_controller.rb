@@ -2,12 +2,10 @@ class MyMagicController < ApplicationController
   before_action :set_item, only: [:destroy, :edit, :update, :show]
    
   def initialize
-    raise 'needs overwrite'
-    raise 'item_params needs it too'
-#     @default_model = Task
-#     @default_redirect_path = '/tasks'
+    super
+    configure
   end
-  
+    
   def index
     @list = @default_model.all
     render template: 'layouts/magic_view'
@@ -50,6 +48,13 @@ class MyMagicController < ApplicationController
   end
   
   private
+  
+    def configure
+      raise 'needs overwrite'
+      raise 'item_params needs it too'
+  #     @default_model = Task
+  #     @default_redirect_path = '/tasks'
+    end
   
     def set_item
       @item = @default_model.find(params[:id])
