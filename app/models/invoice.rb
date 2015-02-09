@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.default_model_actions
-    [ 'filtered/paid', 'filtered/not_paid', 'filtered/latest', 'filtered/overdue', 'filtered/last_2_weeks', 'new']
+    [ 'filtered/paid', 'filtered/not_paid', 'filtered/latest', 'filtered/overdue', 'filtered/last_2_weeks','filtered/fancy', 'new']
   end
 
   # think about what should be executed in transactions
