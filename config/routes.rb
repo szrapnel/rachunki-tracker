@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'now_plus_time_in_weeks/:number_of_weeks' => 'generals#now_plus_time_in_weeks'
   get 'now_minus_time_in_weeks/:number_of_weeks' => 'generals#now_minus_time_in_weeks'
   
-  get 'invoices/copy_previous_value/:id' => 'invoices#copy_value_from_last'
+  get 'invoices/:id/copy_previous_value' => 'invoices#copy_value_from_last'
   
   get 'operators/abandoned' => 'operators#abandoned'
   get 'operators/open' => 'operators#open'
