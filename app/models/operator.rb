@@ -3,6 +3,8 @@ class Operator < ActiveRecord::Base
   
   validates :name, presence: true
   
+  default_scope { order('name ASC') } 
+  
   def self.get_virtual_columns
     return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?', 'invoices', 'invoices_paid_decorated', 'invoices_not_paid_decorated']
   end
