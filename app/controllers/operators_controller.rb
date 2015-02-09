@@ -1,5 +1,5 @@
 class OperatorsController < ApplicationController
-  before_action :set_operator, only: [:show, :edit, :update, :destroy]
+  before_action :set_operator, only: [:show, :edit, :update, :destroy, :create_next_invoice]
   before_action :authenticate_user!
 
   # GET /operators
@@ -90,6 +90,12 @@ class OperatorsController < ApplicationController
   def closed
     @list = Operator.where(closed:true)
     render template: "layouts/magic_view"
+  end
+  
+  def create_next_invoice
+    i = @operator.invoices.last
+    NextInvoiceLogic::create_next(i)
+    redirect_to :back, notice: 'next invoice created from last'
   end
 
   private

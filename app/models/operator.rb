@@ -12,6 +12,10 @@ class Operator < ActiveRecord::Base
   def self.default_model_actions
     return ['new', 'abandoned', 'open', 'closed']
   end
+  
+  def self.default_instance_actions
+    ['create_next_invoice', 'show', 'edit', 'destroy']
+  end
 
   #   TODO rename
   def check_if_abandoned?

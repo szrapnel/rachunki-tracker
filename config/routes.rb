@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'operators/closed' => 'operators#closed'
   get 'operators/magic_index' => 'operators#magic_index'
   get 'operators/:id/destroy' => 'operators#destroy'
+  get 'operators/:id/create_next_invoice' => 'operators#create_next_invoice'
   resources :operators
   
   get 'banks' => 'banks#magic_index' #heroku quickfix
