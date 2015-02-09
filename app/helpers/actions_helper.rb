@@ -53,4 +53,14 @@ module ActionsHelper
     return ['new']
   end
   
+  def show_additional_links(object)
+    return nil if not object.class.respond_to? :additional_links
+    result = ''
+    object.class.additional_links.each do |link|
+      result += link_to link, link
+      result += ' | '
+    end
+    return result.html_safe
+  end
+  
 end

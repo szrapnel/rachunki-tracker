@@ -31,8 +31,10 @@ Rails.application.routes.draw do
   get 'shows/:id/destroy' => 'shows#destroy'
   resources :seasons
   get 'seasons/:id/destroy' => 'seasons#destroy'
+  get 'seasons/:id/create_next_episode' => 'seasons#create_next_episode'
   resources :episodes
   get 'episodes/:id/destroy' => 'episodes#destroy'
+  get 'episodes/:id/create_next_episode' => 'episodes#create_next_episode'
   
   resources :tasks
   get 'tasks/:id/destroy' => 'tasks#destroy'

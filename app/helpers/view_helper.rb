@@ -61,7 +61,26 @@ module ViewHelper
     result += object.class::get_virtual_columns if object.class.respond_to? :get_virtual_columns
     return result
   end
-
+    
+  def aa(object)
+    result = ''
+    result += magic_table(@item.send('seasons'))
+    result += magic_table(@item.send('seasons'))
+    result.html_safe
+  end
+    
+  def show_collections(object)
+    return nil if not object.class.respond_to? :collections
+    result = ''
+    result += '<h1>Collections begin</h1>'
+    object.class.collections.each do |collection|
+      result += "<h2>#{collection}</h2>"
+      result += magic_table(@item.send(collection))
+    end
+    result += '<h1>Collections end</h1>'
+    result += '<hr/>'
+    result.html_safe
+  end
    
   def magic_list(list)
     #     TODO koniecznie przepisz ta fjce na partial albo content_tag
