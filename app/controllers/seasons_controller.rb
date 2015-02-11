@@ -4,10 +4,10 @@ class SeasonsController < MyMagicController
     s=Season.find(params[:id])
     if s.create_next_episode
       #       TODO back albo defaultep
-      redirect_to @default_redirect_path, notice: "Next episode was successfully created."
+      redirect_to @default_redirect_path, notice: "Next season was successfully created."
     else
       #       TODO back albo default
-      redirect_to @default_redirect_path, alert: "Failed to create next episode"
+      redirect_to @default_redirect_path, alert: "Failed to create next season"
     end
   end
   
