@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+  colorTds();
+});
+
 function colorTds() {
   $('td').each(function( index, value ) {
     colorTd(value);
