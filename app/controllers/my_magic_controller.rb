@@ -28,7 +28,7 @@ class MyMagicController < ApplicationController
   def create
     @item = @default_model.new(item_params)
     if @item.save
-      redirect_to @default_redirect_path, notice: "#{@default_model} created successfully."
+      redirect_to get_redirect_location, notice: "#{@default_model} created successfully."
     else
       render action: 'new'
     end
@@ -36,7 +36,7 @@ class MyMagicController < ApplicationController
   
   def update
     if @item.update(item_params)
-      redirect_to @default_redirect_path, notice: "#{@default_model} was successfully updated."
+      redirect_to get_redirect_location, notice: "#{@default_model} was successfully updated."
     else
       render :edit
     end
@@ -44,10 +44,14 @@ class MyMagicController < ApplicationController
   
   def destroy
     @item.destroy
-    redirect_to @default_redirect_path, notice: "#{@default_model} was successfully destroyed."
+    redirect_to get_redirect_location, notice: "#{@default_model} was successfully destroyed."
   end
   
   private
+  
+    def get_redirect_location
+      @default_redirect_path
+    end
   
     def configure
       raise 'needs overwrite'
