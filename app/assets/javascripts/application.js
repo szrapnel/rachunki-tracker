@@ -22,22 +22,26 @@ function colorTds() {
 }
 
 function colorTd(td) {
-  var v = td.innerText
-  if(v=='false')
+  var v = td.innerText;
+  if(v==='false') {
     $(td).css('background-color', 'orangered');  
-  if(v=='true')
+  } else if(v==='true') {
     $(td).css('background-color', 'limegreen');
+  }
   
-  if(v=='COOL')
+  if(v==='COOL') {
     $(td).css('background-color', 'aqua');
-  if(v=='CRITICAL')
+  } else if(v==='CRITICAL') {
     $(td).css('background-color', 'orange');
-  if(v=='OVERDUE')
+  } else if(v==='OVERDUE') {
     $(td).css('background-color', 'orangered');
-  if(v=='DONE')
+  } else if(v==='DONE') {
     $(td).css('background-color', 'limegreen');
-  if(v=='NEVER DONE')
+  } else if(v==='NEVER DONE') {
     $(td).css('background-color', 'orangered');
-  if(v=='UNKNOWN')
+  } else if(v==='URGENT') {
+    $(td).css('background-color', 'red');
+  } else if(v==='UNKNOWN') {
     $(td).css('background-color', 'pink');
+  }
 }

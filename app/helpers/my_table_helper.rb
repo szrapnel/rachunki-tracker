@@ -20,6 +20,7 @@ module MyTableHelper
           content_tag :tr do
             columns.collect { |column|
   #             concat content_tag(:td, elem.attributes[column[:name]])
+              #               TODO tutaj moze wepnij klikalny link po id
               concat content_tag(:td, get_smart_field_value(elem, column[:name]))
             }.to_s.html_safe
           #         stad
