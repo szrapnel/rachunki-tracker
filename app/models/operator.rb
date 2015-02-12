@@ -1,22 +1,21 @@
 class Operator < ActiveRecord::Base
   has_many :invoices
+  has_one :operator_postpone
   
   validates :name, presence: true
   
-  default_scope { order('name ASC') } 
+  def self.default_instance_actions
+    ['show', 'edit', 'destroy', 'postpone_operator', 'cancel_postpone_operator']
+  end
   
   def self.get_virtual_columns
-    return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?', 'invoices', 'invoices_paid_decorated', 'invoices_not_paid_decorated']
+    return ['get_last_payment_date', 'valid?', 'logic_valid?', 'check_if_abandoned?', 'invoices', 'invoices_paid_decorated', 'invoices_not_paid_decorated', 'operator_postpone', 'ok_to_show?']
   end
   
   def self.default_model_actions
     return ['new', 'abandoned', 'open', 'closed']
   end
-  
-  def self.default_instance_actions
-    ['create_next_invoice', 'show', 'edit', 'destroy']
-  end
-
+   
   #   TODO rename
   def check_if_abandoned?
     return false if closed

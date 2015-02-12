@@ -13,5 +13,12 @@ class OperatorDecorator < Draper::Decorator
   def invoices_not_paid_decorated
     InvoiceDecorator.decorate_collection(invoices.where({paid:false}))
   end
+  
+  def ok_to_show?
+    if operator_postpone
+      return operator_postpone.ok_to_show?
+    end
+    true
+  end
 
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'status' => 'generals#status'
   get 'status_better' => 'generals#status_better'
+  get 'status_better2' => 'generals#status_better2'
   get 'set_now' => 'generals#set_now'
   get 'set_now/:actual_date' => 'generals#set_now'
   get 'now_plus_time_in_weeks/:number_of_weeks' => 'generals#now_plus_time_in_weeks'
@@ -30,6 +31,10 @@ Rails.application.routes.draw do
   
   resources :tasks
   get 'tasks/:id/destroy' => 'tasks#destroy'
+  
+  
+  get 'operators/:id/postpone_operator' => 'operators#postpone_operator'
+  get 'operators/:id/cancel_postpone_operator' => 'operators#cancel_postpone_operator'
   
 #   resources :operators do
 #     resources :invoices

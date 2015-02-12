@@ -27,4 +27,12 @@ module OperatorsHelper
     return result
   end
   
+  def self.filter_postponed(operators)
+#     operators.each do |operator|
+#       operators.select { |operator| operator.operator_postpone.ok_to_show? if operator.operator_postpone}
+#     end
+#     operators
+    operators.select { |o| o.ok_to_show?}
+  end
+  
 end

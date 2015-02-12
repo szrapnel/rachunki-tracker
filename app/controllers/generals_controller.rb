@@ -20,6 +20,15 @@ class GeneralsController < ApplicationController
     render template: "layouts/status"
   end
   
+  def status_better2
+  	fancy = InvoiceFilteredHelper.fancy
+    @invoices = InvoiceDecorator.decorate_collection(fancy)
+    @operators = OperatorsHelper.get_abandoned_operators_not_listed_in_invoices(@invoices)
+    @operators = OperatorDecorator.decorate_collection(@operators)
+    @operators = OperatorsHelper.filter_postponed(@operators)
+    render template: "layouts/status"
+  end
+  
   def set_now(now=params[:actual_date])
     if now.nil?
 #       now = Date.today

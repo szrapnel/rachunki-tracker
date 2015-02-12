@@ -97,6 +97,20 @@ class OperatorsController < ApplicationController
     NextInvoiceLogic::create_next(i)
     redirect_to :back, notice: 'next invoice created from last'
   end
+  
+  def postpone_operator
+    p = OperatorPostpone.new
+    p.operator_id = params[:id]
+    p.days=7
+    p.save
+    redirect_to :back, notice: "Postponed"
+  end
+  
+  def cancel_postpone_operator
+    o = Operator.find(params[:id])
+    o.operator_postpone.destroy
+    redirect_to :back, notice: "Cancel postpone success"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
