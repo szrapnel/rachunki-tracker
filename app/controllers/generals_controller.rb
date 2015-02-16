@@ -55,7 +55,7 @@ class GeneralsController < ApplicationController
     
   def landing_page
     if user_signed_in?
-      redirect_to '/status'
+      redirect_to '/status_better2'
     else
       redirect_to '/users/sign_in'
     end
