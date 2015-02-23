@@ -107,8 +107,7 @@ class OperatorsController < ApplicationController
   end
   
   def cancel_postpone_operator
-    o = Operator.find(params[:id])
-    o.operator_postpone.destroy
+    OperatorPostpone.destroy_all(:operator_id => params[:id])
     redirect_to :back, notice: "Cancel postpone success"
   end
 
