@@ -5,7 +5,7 @@ class Operator < ActiveRecord::Base
   validates :name, presence: true
   
   def self.default_instance_actions
-    ['show', 'edit', 'destroy', 'postpone_operator', 'cancel_postpone_operator']
+    ['show', 'edit', 'destroy', 'postpone_operator', 'cancel_postpone_operator', 'create_me_invoice']
   end
   
   def self.get_virtual_columns
@@ -43,6 +43,12 @@ class Operator < ActiveRecord::Base
   
   def invoice_number
     invoices.count
+  end
+  
+  def create_me_invoice
+    invoice = Invoice.new
+    invoice.operator_id=self.id
+    invoice.save
   end
   
 end

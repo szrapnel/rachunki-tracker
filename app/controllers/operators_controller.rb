@@ -1,5 +1,5 @@
 class OperatorsController < ApplicationController
-  before_action :set_operator, only: [:show, :edit, :update, :destroy, :create_next_invoice]
+  before_action :set_operator, only: [:show, :edit, :update, :destroy, :create_next_invoice, :create_me_invoice]
   before_action :authenticate_user!
 
   # GET /operators
@@ -109,6 +109,14 @@ class OperatorsController < ApplicationController
   def cancel_postpone_operator
     OperatorPostpone.destroy_all(:operator_id => params[:id])
     redirect_to :back, notice: "Cancel postpone success"
+  end
+  
+  def create_me_invoice
+    if @operator.create_me_invoice
+      redirect_to :back, notice: 'create me invoice success'
+    else
+      redirect_to :back, alert: 'create me invoice failure'
+    end
   end
 
   private

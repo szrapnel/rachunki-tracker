@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   
   get 'operators/:id/postpone_operator' => 'operators#postpone_operator'
   get 'operators/:id/cancel_postpone_operator' => 'operators#cancel_postpone_operator'
+  get 'operators/:id/create_me_invoice' => 'operators#create_me_invoice'
   
 #   resources :operators do
 #     resources :invoices
