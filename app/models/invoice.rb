@@ -8,11 +8,11 @@ class Invoice < ActiveRecord::Base
   default_scope { order('due_date ASC') } 
 
   def self.default_instance_actions
-    ['mark_as_paid_and_create_next', 'show', 'edit', 'destroy', 'copy_previous_value']
+    ['mark_as_paid_and_create_next', 'mark_as_paid', 'show', 'edit', 'destroy', 'copy_previous_value']
   end
 
   def self.get_virtual_columns
-    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?', 'paid_data_ok']
+    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?', 'paid_data_ok', 'has_next?']
   end
 
   def self.default_model_actions
@@ -23,13 +23,17 @@ class Invoice < ActiveRecord::Base
 
   # byla jeszcze uwaga ze od odczytania to potem zrobienia czegos odczytana wartosc sie moze zmienic np w mark_as_paid_and_create_next, ale moim zdaniem w copy_previus_value jest podobnie
 
-  def mark_as_paid_and_create_next
+  def mark_as_paid_and_create_next(create_next = true)
     unless ready_to_mark_as_paid?
       return false
     end
     # TODO when mark_as_paid fails next is already created
-    NextInvoiceLogic::create_next(self)
+    NextInvoiceLogic::create_next(self) if create_next
     mark_as_paid
+  end
+  
+  def mark_as_paid
+    mark_as_paid_and_create_next false
   end
 
   def ready_to_mark_as_paid?
@@ -68,6 +72,10 @@ class Invoice < ActiveRecord::Base
       return due_date > payment_date
     end
     false
+  end
+  
+  def has_next?
+    operator.invoices.last.id>id
   end
   
   private
