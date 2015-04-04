@@ -12,7 +12,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.get_virtual_columns
-    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?', 'paid_data_ok', 'has_next?']
+    ['priority', 'paid_in_time?', 'valid?', 'logic_valid?', 'paid_data_ok', 'has_next?', 'operator_description']
   end
 
   def self.default_model_actions
@@ -72,6 +72,10 @@ class Invoice < ActiveRecord::Base
       return due_date > payment_date
     end
     false
+  end
+  
+  def operator_description
+    operator.description
   end
   
   def has_next?
