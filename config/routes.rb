@@ -48,11 +48,9 @@ Rails.application.routes.draw do
   post 'invoices' => 'invoices#index'
   
   get 'invoices/:id/mark_as_paid_and_create_next' => 'invoices#mark_as_paid_and_create_next'
-  
+  get 'invoices/:id/mark_as_paid' => 'invoices#mark_as_paid'
   get 'invoices/:id/mark_valid_due_date_true' => 'invoices#mark_valid_due_date_true'
-  
   get 'invoices/:id/mark_valid_due_date_false' => 'invoices#mark_valid_due_date_false'
-  
   get 'invoices/:id/copy_value_from_last' => 'invoices#copy_value_from_last'
   
   get 'invoices/filtered/:filter_name' => 'invoices#filtered'
