@@ -43,7 +43,7 @@ module MyTableHelper
     def handle_descriptions text
       if (!text.blank? && text.class==String && text.size>20)
         concat content_tag(:td, 
-          content_tag(:div, truncate(text, length: 17), class: 'description') +
+          content_tag(:div, truncate(text, length: 25), class: 'description') +
           content_tag(:div, text, class: "popup_description")
         )
       else
