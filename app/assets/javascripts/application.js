@@ -17,6 +17,13 @@
 
 $(document).ready(function() {
   colorTds();
+  
+  $('.description').hover(function() {
+    $(this).parent().children('.popup_description').show();
+  }, function() {
+    $(this).parent().children('.popup_description').hide();
+  });
+  
 });
 
 function colorTds() {

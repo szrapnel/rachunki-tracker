@@ -21,7 +21,8 @@ module MyTableHelper
             columns.collect { |column|
   #             concat content_tag(:td, elem.attributes[column[:name]])
               #               TODO tutaj moze wepnij klikalny link po id
-              concat content_tag(:td, get_smart_field_value(elem, column[:name]))
+#               concat content_tag(:td, get_smart_field_value(elem, column[:name]))
+              handle_descriptions(get_smart_field_value(elem, column[:name]))
             }.to_s.html_safe
           #         stad
             concat_actions(elem, action_names)
@@ -36,6 +37,17 @@ module MyTableHelper
     def concat_actions(elem, action_names=[]) 
       action_names.each do |action_name|
         concat content_tag(:td, prepare_action_link(elem, action_name)).to_s.html_safe
+      end
+    end
+  
+    def handle_descriptions text
+      if (!text.blank? && text.class==String && text.size>20)
+        concat content_tag(:td, 
+          content_tag(:div, truncate(text, length: 17), class: 'description') +
+          content_tag(:div, text, class: "popup_description")
+        )
+      else
+        concat content_tag(:td, text)
       end
     end
 
