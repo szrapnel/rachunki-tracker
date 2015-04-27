@@ -1,6 +1,5 @@
 class TasksController < MyMagicController
-   
- 
+
   private
   
     def configure

@@ -1,6 +1,5 @@
 class OperatorsController < ApplicationController
   before_action :set_operator, only: [:show, :edit, :update, :destroy, :create_next_invoice, :create_me_invoice]
-  before_action :authenticate_user!
 
   # GET /operators
   # GET /operators.json

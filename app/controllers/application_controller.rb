@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   before_action :set_user_session_for_now_service
   
+  before_action :authenticate_user!
+  
   def redirect_after_success(msg)
     redirect_to smart_back_path, notice: msg
   end

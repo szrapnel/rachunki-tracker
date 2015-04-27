@@ -1,6 +1,5 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_paid_and_create_next, :mark_valid_due_date_true, :mark_valid_due_date_false, :show, :copy_value_from_last]
-  before_action :authenticate_user!
   
   def index
     @list = Invoice.all.order(:id).decorate

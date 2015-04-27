@@ -1,6 +1,5 @@
 class MyMagicController < ApplicationController
   before_action :set_item, only: [:destroy, :edit, :update, :show]
-  before_action :authenticate_user!
    
   def initialize
     super
