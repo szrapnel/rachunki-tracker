@@ -24,17 +24,20 @@ Rails.application.routes.draw do
   get 'operators/:id/create_next_invoice' => 'operators#create_next_invoice'
   resources :operators
   
-  get 'banks' => 'banks#magic_index' #heroku quickfix
-  get 'banks/magic_index' => 'banks#magic_index'
-  get 'banks/:id/destroy' => 'banks#destroy'
-  get 'banks/new' => 'banks#new'
-  post 'banks/create' => 'banks#create'
-  get 'banks/edit' => 'banks#edit'
-  post 'banks/update' => 'banks#update'
+  # get 'banks' => 'banks#magic_index' #heroku quickfix
+  # get 'banks/magic_index' => 'banks#magic_index'
+  # get 'banks/:id/destroy' => 'banks#destroy'
+  # get 'banks/new' => 'banks#new'
+  # post 'banks/create' => 'banks#create'
+  # get 'banks/edit' => 'banks#edit'
+  # post 'banks/update' => 'banks#update'
   # resources :banks
   
   resources :tasks
   get 'tasks/:id/destroy' => 'tasks#destroy'
+
+  resources :banks
+  get 'banks/:id/destroy' => 'banks#destroy'
   
   
   get 'operators/:id/postpone_operator' => 'operators#postpone_operator'
