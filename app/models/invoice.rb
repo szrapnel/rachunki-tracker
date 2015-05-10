@@ -29,7 +29,7 @@ class Invoice < ActiveRecord::Base
     end
     # TODO when mark_as_paid fails next is already created
     NextInvoiceLogic::create_next(self) if create_next
-    mark_as_paid
+    execute_mark_as_paid
   end
   
   def mark_as_paid
@@ -84,7 +84,7 @@ class Invoice < ActiveRecord::Base
   
   private
     
-    def mark_as_paid
+    def execute_mark_as_paid
       self.paid = true
       self.payment_date = TimeService::get_now
       save
