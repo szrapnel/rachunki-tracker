@@ -48,6 +48,8 @@ gem 'tzinfo-data'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'airbrake'
+
 group :production do
   gem 'pg'
 end

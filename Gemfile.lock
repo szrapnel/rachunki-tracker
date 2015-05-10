@@ -27,6 +27,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     bcrypt (3.1.9-x86-mingw32)
@@ -157,6 +160,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  airbrake
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   devise
