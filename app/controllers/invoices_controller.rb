@@ -96,7 +96,7 @@ class InvoicesController < ApplicationController
     def set_invoice
       id = params[:id]
       if id
-        if Invoice.where(params[:id]).exists?
+        if Invoice.where(id:id).exists?
           @invoice = Invoice.find(id)
         end
       end
