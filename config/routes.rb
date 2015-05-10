@@ -27,7 +27,11 @@ Rails.application.routes.draw do
   get 'banks' => 'banks#magic_index' #heroku quickfix
   get 'banks/magic_index' => 'banks#magic_index'
   get 'banks/:id/destroy' => 'banks#destroy'
-  resources :banks
+  get 'banks/new' => 'banks#new'
+  post 'banks/create' => 'banks#create'
+  get 'banks/edit' => 'banks#edit'
+  post 'banks/update' => 'banks#update'
+  # resources :banks
   
   resources :tasks
   get 'tasks/:id/destroy' => 'tasks#destroy'
