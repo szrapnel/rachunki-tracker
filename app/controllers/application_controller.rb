@@ -28,5 +28,9 @@ class ApplicationController < ActionController::Base
       return request.referer
     end
   end
+
+  def airbrake_test
+    raise 'error test'
+  end
   
 end

@@ -71,6 +71,8 @@ Rails.application.routes.draw do
   
   get 'invoices/:id/edit' => 'invoices#edit'
   patch 'invoices/:id/update' => 'invoices#update'
+
+  get '/airbrake_test' => 'application#airbrake_test'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
