@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:destroy, :edit, :update, :mark_as_paid_and_create_next, :mark_valid_due_date_true, :mark_valid_due_date_false, :show, :copy_value_from_last]
+  before_action :set_invoice
   
   def index
     @list = Invoice.all.order(:id).decorate
@@ -66,6 +66,14 @@ class InvoicesController < ApplicationController
       redirect_after_failure 'Incorrect data to mark.'
     end
   end
+
+  def mark_as_paid
+    if @invoice.mark_as_paid
+      redirect_after_success 'Invoice was successfully marked.' + link_to_notice
+    else
+      redirect_after_failure 'Incorrect data to mark.'
+    end
+  end
    
   def copy_value_from_last
     if @invoice.copy_previous_value
@@ -86,7 +94,12 @@ class InvoicesController < ApplicationController
   private
   
     def set_invoice
-      @invoice = Invoice.find(params[:id])
+      id = params[:id]
+      if id
+        if Invoice.where(params[:id]).exists?
+          @invoice = Invoice.find(id)
+        end
+      end
     end
 
     def invoice_params
