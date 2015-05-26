@@ -16,6 +16,6 @@ https://travis-ci.org/szrapnel/rachunki-tracker.svg?branch=master
 CODECLIMATE_REPO_TOKEN=67b1e0dc9dfd70347c62df57b1cc852753262d836482f5c24d4108292e455356
 export CODECLIMATE_REPO_TOKEN
 
-
+--
 
 bundle exec rake
